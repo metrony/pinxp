@@ -13,15 +13,37 @@
     
 	<script>
 	$(function() {
-		$( "#draggable" ).draggable({ snap: true });
-		$( "#draggable2" ).draggable({ snap: ".ui-widget-header" });
-        $( "#draggable2" ).draggable("option", "snapTolerance", 20);
+        //$( "#draggable" ).draggable({ snap: ".ui-widget-header" });
+        $( "#draggable" ).draggable({ snap: ".ui-widget-header", snapMode: "inner" });
+		//$( "#draggable" ).draggable({ snap: true });
+        $( "#draggable" ).draggable({ grid: [ 30, 30 ] });
         
-		$( "#draggable3" ).draggable({ snap: ".ui-widget-header", snapMode: "outer" });
+		//$( "#draggable2" ).draggable({ snap: ".ui-widget-header" });
+        $( "#draggable2" ).draggable({ snap: ".ui-widget-header", snapMode: "inner" });
+        // $( "#draggable2" ).draggable("option", "snapTolerance", 20);
+       
+        
+        //$( "#draggable3" ).draggable({ snap: ".ui-widget-header" });
+		$( "#draggable3" ).draggable({ snap: ".ui-widget-header", snapMode: "inner" });
+        $( "#draggable3" ).draggable({ grid: [ 20,20 ] });
+       
 
+        //$( "#draggable4" ).draggable({ snap: ".ui-widget-header" });
+        $( "#draggable4" ).draggable({ snap: ".ui-widget-header", snapMode: "both" });
 		$( "#draggable4" ).draggable({ grid: [ 20,20 ] });
-		$( "#draggable5" ).draggable({ grid: [ 80, 80 ] });
-        $( "#draggable6" ).draggable({ grid: [ 80, 80 ] });
+        //$( "#draggable4" ).draggable("option", "snapTolerance", 20);
+      
+        
+        
+		//$( "#draggable5" ).draggable({ snap: ".ui-widget-header" });
+        $( "#draggable5" ).draggable({ snap: ".ui-widget-header", snapMode: "both" });
+        $( "#draggable5" ).draggable({ grid: [ 30, 30 ] });
+       
+        
+        //$( "#draggable6" ).draggable({ snap: ".ui-widget-header" });
+        $( "#draggable6" ).draggable({ snap: ".ui-widget-header", snapMode: "both" });
+        $( "#draggable6" ).draggable({ grid: [ 30, 30 ] });
+      
 	});
 	</script>
     </head>

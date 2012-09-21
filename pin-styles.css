@@ -8,11 +8,12 @@ border-style:dotted;
 border-color:#000;
 }
 
-    .draggable { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
-	.ui-widget-header p, .ui-widget-content p { margin: 0; }
+.draggable { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
+.ui-widget-header p, .ui-widget-content p { margin: 0; }
 
 #draggable2.draggable, #draggable2 img {width:125px; height:450px;}
 #draggable3.draggable, #draggable3 img {width:250px;height:157px;}
+
 #draggable4.draggable, #draggable4 img {width:125px;height:154px;}
 
 #draggable5.draggable {height:160px; width:125px}
