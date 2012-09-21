@@ -21,24 +21,31 @@
 
 		$( "#draggable4" ).draggable({ grid: [ 20,20 ] });
 		$( "#draggable5" ).draggable({ grid: [ 80, 80 ] });
+        $( "#draggable6" ).draggable({ grid: [ 80, 80 ] });
 	});
 	</script>
     </head>
     <body>
     
-    
+    <div><img src="http://pintalk.net/wp-content/uploads/2012/09/PinTalk-Pinterest-News.jpg"></div>
+    <div class="demo-description">
+<p>Drag and or all of the photos into the target rectangle. One box wil allow you to type text.</p>
+</div>
+<!-- End demo-description -->
+
     <div class="container-fluid demo">
   <div class="row-fluid">
     <div class="span2">
     
     <div id="snaptarget" class="ui-widget-header">
-    <p>I'm a snap target</p>
+    <p>I'm the target</p>
 </div>
       <!--Sidebar content-->
     </div>
     <div class="span10">
     <div id="draggable" class="draggable ui-widget-content">
-    <p>Default (snap: true), snaps to all other draggable elements</p>
+    <img src="https://raw.github.com/metrony/pinxp/master/images/ardith-250px-by-350px.jpg"/>
+    <!-- <p>Default (snap: true), snaps to all other draggable elements</p> -->
 </div>
 
 <div id="draggable2" class="draggable ui-widget-content">
@@ -46,15 +53,21 @@
 </div>
 
 <div id="draggable3" class="draggable ui-widget-content">
-	<p>I only snap to the outer edges of the big box</p>
+<img src="https://raw.github.com/metrony/pinxp/master/images/Beach-House-250px.jpg"/>
+	<!-- <p>I only snap to the outer edges of the big box</p> -->
 </div>
 
 <div id="draggable4" class="draggable ui-widget-content">
-	<p>I snap to a 20 x 20 grid</p>
+<img src="https://raw.github.com/metrony/pinxp/master/images/Molly-125px.jpg"/>
+	<!-- <p>I snap to a 20 x 20 grid</p> -->
 </div>
 
 <div id="draggable5" class="draggable ui-widget-content">
-	<textarea>I snap to a 80 x 80 grid</textarea>
+	<textarea>Option to Add Text I snap to a 80 x 80 grid</textarea>
+</div>
+<div id="draggable6" class="draggable ui-widget-content">
+<img src="https://raw.github.com/metrony/pinxp/master/images/crab-250px.jpg"/>
+    <!-- <p>I snap to a 20 x 20 grid</p> -->
 </div>
 
     

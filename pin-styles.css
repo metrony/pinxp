@@ -2,14 +2,20 @@
 div.demo div div div {background-color:#cb2027;}
 
 #snaptarget {background-color:#f2f0f1;
-height: 600px;
+height: 350px;
+width: 250px;
 border-style:dotted;
 border-color:#000;
 }
 
-    .draggable { width: 90px; height:180px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
+    .draggable { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
 	.ui-widget-header p, .ui-widget-content p { margin: 0; }
 
-#draggable2.draggable, #draggable2 img {height:80px; width:90px;}
-#draggable5.draggable {height:100px; width:90px}
-#draggable5 textarea {height:80px; width:90px;padding:0;margin:0;}
+#draggable2.draggable, #draggable2 img {width:125px; height:450px;}
+#draggable3.draggable, #draggable3 img {width:250px;height:157px;}
+#draggable4.draggable, #draggable4 img {width:125px;height:154px;}
+
+#draggable5.draggable {height:160px; width:125px}
+#draggable5 textarea {height:150px; width:125px;padding:0;margin:0;}
+
+#draggable6.draggable, #draggable6 img {width:250px; height:162px;}
