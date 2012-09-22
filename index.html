@@ -12,7 +12,22 @@
     
     
 	<script>
+    var dropped_image;
+    
+    var photoDropped = function(event,ui){
+        console.log(ui);
+        console.log("dropped item was");
+        console.log(ui.draggable);
+         dropped_image = ui.draggable;
+         
+    
+    }
+    
 	$(function() {
+        
+        $("#snaptarget").droppable( { drop: photoDropped} );
+        
+        
         //$( "#draggable" ).draggable({ snap: ".ui-widget-header" });
         $( "#draggable" ).draggable({ snap: ".ui-widget-header", snapMode: "inner" });
 		//$( "#draggable" ).draggable({ snap: true });
@@ -45,6 +60,40 @@
         $( "#draggable6" ).draggable({ grid: [ 30, 30 ] });
       
 	});
+    
+    $(function() {
+    	$( "input:submit, a, button", ".demo" ).button();
+		$( "a", ".demo" ).click(function() { return false; });
+	});
+    
+    <!--
+    $(function() {
+      $('#crop').submit(function() {
+        var t = this;
+        $(this).trigger('reset'); // fiddle to reset the image for the demo
+        var img = $('img');
+         $( "#draggable4" ).draggable({ revert: true });
+        $( ".selector" ).draggable({ revert: true });
+        /* img.crop({ height: t.height.value, width: t.width.value })
+        return false;
+      }).bind('reset', function() { 
+        var img = $('img');
+        var resetImg = document.createElement('img');
+        resetImg.src = 'http://farm1.static.flickr.com/131/379614091_24eefbeb27.jpg?v=0';
+        resetImg.height = '375';
+        resetImg.width = '500';
+        resetImg.alt = resetImg.title = "Remy's face-plant!";
+        img[0].parentNode.replaceChild(resetImg, img[0]);
+        */
+      })
+    })
+  
+ /* $(document).ready(function() {
+    $("button").button();
+    $( "#draggable4" ).draggable({ revert: true });
+  });
+   */ 
+    
 	</script>
     </head>
     <body>
@@ -99,8 +148,12 @@
 </div>
     
 	
+<form action="" id="crop">
+<input type="reset" name="reset" value="xxReset Images" id="reset" />
+</form>
 
 
+<button>Reset Images</button>
 
 <div class="demo-description">
 <p>Snap the draggable to the inner or outer boundaries.  Use the <code>snap</code>, <code>snapMode</code> (inner, outer, both), and <code>snapTolerance</code> (distance in pixels the draggable must be from the element when snapping is invoked) options. </p>
