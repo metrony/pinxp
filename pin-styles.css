@@ -22,10 +22,8 @@ border-color:#000;
 #draggable6.draggable, #draggable6 img {width:250px; height:162px;}
 
 
-/* ------------ Below styles are for the new page */
+/* ------------- Below styles are for the new page */
 
-
-//original #drop { background-color: yellow; width: 300px; height: 250px; }
 
 #drop {
 background-color:#f2f0f1;
@@ -35,13 +33,14 @@ border-style:dotted;
 border-color:#000;
 }
 
-//original .drag { width: 250px; height: 250px;} 
+//.draggable { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
+.draggable {padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
 
-.draggable, .drag { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
 
 #drag.draggable, #drag img {width:250px;height:157px;}
-
 #drag2.draggable, #drag2 img {width:125px;height:154px;}
+
+#drag3.draggable, #drag3 img {width:250px;height:350px;}
 
 #drag4.draggable, #drag4  img {width:125px; height:450px;}
 
