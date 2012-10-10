@@ -1,4 +1,9 @@
 
+body {
+ margin: 0px;
+ padding: 0px;
+}
+
 div.demo div div div {background-color:#cb2027;}
 
 #snaptarget {background-color:#f2f0f1;
