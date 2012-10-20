@@ -6,6 +6,10 @@ body {
 
 div.demo div div div {background-color:#cb2027;}
 
+.header {
+    height: 260px;
+background-color:#222224; }
+
 #snaptarget {background-color:#f2f0f1;
 height: 350px;
 width: 250px;
