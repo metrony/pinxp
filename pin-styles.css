@@ -4,20 +4,21 @@ body {
  padding: 0px;
 }
 
-div.demo div div div {background-color:#cb2027;}
+div.demo div div div {background-color:#222224;}
 
 .header {
-    height: 260px;
-background-color:#222224; }
+height: 260px;
+background-color:#222224;
+padding-left: 30%;
+padding-top: 5%;}
 
 #snaptarget {background-color:#f2f0f1;
 height: 350px;
 width: 250px;
-border-style:dotted;
-border-color:#000;
 }
 
-.draggable { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
+.draggable { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;
+cursor:move; border-style:dashed;border-color:#eb1e25;}
 .ui-widget-header p, .ui-widget-content p { margin: 0; }
 
 #draggable2.draggable, #draggable2 img {width:125px; height:450px;}
@@ -35,11 +36,12 @@ border-color:#000;
 
 
 #drop {
-background-color:#f2f0f1;
+background-color:#212123;
 height: 350px;
 width: 250px;
-border-style:dotted;
-border-color:#000;
+border-style:dashed;
+border-color:#eb1e25;
+color:#ffffff
 }
 
 //.draggable { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
