@@ -65,6 +65,6 @@ app.post('/api/upload_file', function(req, res, next){
 });
 
 if (!module.parent) {
-  app.listen(process.env.PORT, process.env.IP);
+  app.listen(process.env.PORT);
   console.log('Express started on port' + process.env.PORT);
 }
