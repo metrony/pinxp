@@ -11,34 +11,115 @@
         <style src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css"></style>
     
     
-        <script>
+    <script>
+        function validateForm()
+        {
+        var x=document.forms["myForm"]["fname"].value;
+        if (x==null || x=="")
+          {
+          alert("First name must be filled out");
+          return false;
+          }
+        }
         
-        </script>
+        
+        
+    //ADD A SEPRATOR
+  
+function myFunction()
+{
+alert("Hello! I am an alert box!");
+}
+
+
+//ADD COLOR
+function myFunctionColor()
+{
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+
+// Create gradient
+var grd=ctx.createLinearGradient(0,0,200,0);
+grd.addColorStop(0,"red");
+grd.addColorStop(1,"white");
+
+// Fill with gradient
+ctx.fillStyle=grd;
+ctx.fillRect(0,0,250,100);
+}
+
+
+//ADD YOUR NAME
+function myFunction2()
+{
+    
+    var x=document.getElementById("fname");
+    alert(x.innerHTML);
+
+var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+
+//Draw a red line at y=100
+ctx.strokeStyle="red";
+ctx.moveTo(5,100);
+ctx.lineTo(395,100);
+ctx.stroke();
+
+//ADD the Text
+ctx.textBaseline="bottom"; 
+ctx.fillText("Your Name Goes Here",10,100); 
+
+    /* var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    ctx.font="20px Arial";
+    ctx.fillText("Your Name Goes Here",5,260);
+    
+    */
+}
+    </script>
+
+
     </head>
 <body>
     <div class="header"><img src="images/PinPixUploader-1.jpg">
-    
     </div>        
+    
     <div class="demo-description">
-        <p>Drag and or all of the photos into the target rectangle. One box will allow you to type text.</p>
+        <p>Drag and or all of the photos into the target rectangle.</p>
     </div>
     
+    <form name="myForm" action="demo_form.asp" onsubmit="return validateForm()" method="post">
     <div class="container-fluid demo">
-    <div class="row-fluid">
-    <div class="span2">
-    <!--- LEFT COLUMN --->
+        <div class="row-fluid">
+        
+        <div class="span2">
+        <!--- LEFT COLUMN --->
+        <canvas id="myCanvas" width="250" height="600"
+            style="border:1px solid #000000;">
+                 
+        </canvas>
+        
     
-    <!--Sidebar content-->
-    </div>
-    <div class="span10">
-
-    <!---- RIGHT BAR-->
-            
-   <!--Body content-->
-    </div>
-    </div>
-    </div>
-    
+        
+        <!--Sidebar content-->
+        </div>
+        
+        <div class="span10"> <!---- RIGHT BAR-->
+        COLOR:<BR / >
+        <input type="button" onclick="myFunctionColor()" value="Add Color" />
+        ADD A SEPRATOR<BR />
+        <input type="button" onclick="myFunction()" value="Show alert box" /><BR />
+         <input type="button" onclick="myFunction2()" value="Add Some Text" />
+         <input type="text" id="fname" value="first name">
+        <BR />ADD A SECTION
+        
+        
+                
+       
+        </div><!---- END RIGHT BAR DIV-->
+        </div><!-- ends row-fluid div -->
+    </div><!-- ends fluid demo div -->
+    </form>
     
 </body>
 </html>
