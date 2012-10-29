@@ -12,6 +12,7 @@
     
     
     <script>
+    //FORM VALIDATION
         function validateForm()
         {
         var x=document.forms["myForm"]["fname"].value;
@@ -21,61 +22,105 @@
           return false;
           }
         }
-        
+    
+    // MAKE THE PHOTO DRAGGABLE
+    
+        function allowDrop(ev)
+    {
+    ev.preventDefault();
+    }
+    
+    function drag(ev)
+    {
+    ev.dataTransfer.setData("Text",ev.target.id);
+    }
+    
+    function drop(ev)
+    {
+    ev.preventDefault();
+    var data=ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+    }
+
+
         
         
     //ADD A SEPRATOR
-  
-function myFunction()
-{
-alert("Hello! I am an alert box!");
-}
-
-
-//ADD COLOR
-function myFunctionColor()
-{
-var c=document.getElementById("myCanvas");
-var ctx=c.getContext("2d");
-
-// Create gradient
-var grd=ctx.createLinearGradient(0,0,200,0);
-grd.addColorStop(0,"red");
-grd.addColorStop(1,"white");
-
-// Fill with gradient
-ctx.fillStyle=grd;
-ctx.fillRect(0,0,250,100);
-}
-
-
-//ADD YOUR NAME
-function myFunction2()
-{
-    
-    var x=document.getElementById("fname");
-    alert(x.innerHTML);
-
-var c=document.getElementById("myCanvas");
-var ctx=c.getContext("2d");
-
-//Draw a red line at y=100
-ctx.strokeStyle="red";
-ctx.moveTo(5,100);
-ctx.lineTo(395,100);
-ctx.stroke();
-
-//ADD the Text
-ctx.textBaseline="bottom"; 
-ctx.fillText("Your Name Goes Here",10,100); 
-
-    /* var c=document.getElementById("myCanvas");
+      function mySeparator()
+    {
+        
+    var c=document.getElementById("myCanvas");
     var ctx=c.getContext("2d");
-    ctx.font="20px Arial";
-    ctx.fillText("Your Name Goes Here",5,260);
     
-    */
-}
+      //Draw a red line at y=200
+    ctx.strokeStyle="red";
+    ctx.moveTo(5,200);
+    ctx.lineTo(395,200);
+    ctx.stroke();
+    
+    }
+
+
+
+    //ADD COLOR
+    function myFunctionColor()
+    {
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    
+    // Create gradient
+    var grd=ctx.createLinearGradient(0,0,200,0);
+    grd.addColorStop(0,"red");
+    grd.addColorStop(1,"white");
+    
+    // Fill with gradient
+    ctx.fillStyle=grd;
+    ctx.fillRect(0,0,250,100);
+    }
+
+
+    //ADD YOUR NAME
+    function myFunction2()
+    {
+        
+        var a=document.getElementById('fname').value;
+        var b=document.getElementById('lname').value;
+        //alert(a);
+        
+        
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    
+    //Draw a red line at y=100
+    ctx.strokeStyle="red";
+    ctx.moveTo(5,100);
+    ctx.lineTo(395,100);
+    ctx.stroke();
+    
+    //ADD the Text
+    ctx.textBaseline="bottom"; 
+    //ctx.fillText("Your Name Goes Here",10,100); 
+    ctx.fillText(a+ " " + b,10,100); 
+    
+        /* var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        ctx.font="20px Arial";
+        ctx.fillText("Your Name Goes Here",5,260);
+        
+        */
+        
+        
+        
+    function myFunctionPhoto()
+    {
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    var img=document.getElementById("photo");
+    ctx.drawImage(img,10,10);
+    }
+    
+    
+    }
     </script>
 
 
@@ -94,24 +139,39 @@ ctx.fillText("Your Name Goes Here",10,100);
         
         <div class="span2">
         <!--- LEFT COLUMN --->
-        <canvas id="myCanvas" width="250" height="600"
-            style="border:1px solid #000000;">
+        
+
+<canvas id="myCanvas" width="250" height="500" style="border:1px solid #000000;">
                  
         </canvas>
         
-    
-        
-        <!--Sidebar content-->
+       
         </div>
         
-        <div class="span10"> <!---- RIGHT BAR-->
+        <div class="span10"> <!---- RIGHT COLUMN-->
         COLOR:<BR / >
-        <input type="button" onclick="myFunctionColor()" value="Add Color" />
-        ADD A SEPRATOR<BR />
-        <input type="button" onclick="myFunction()" value="Show alert box" /><BR />
-         <input type="button" onclick="myFunction2()" value="Add Some Text" />
-         <input type="text" id="fname" value="first name">
-        <BR />ADD A SECTION
+        <input type="button" onclick="myFunctionColor()" value="Add Color" /><BR / ><BR / >
+        ADD A SEPRATOR - make this replicable and draggable<BR />
+          <input type="button" onclick="mySeparator()" value="Add a Separator" /><BR /><BR / >
+          
+          
+          <p>About You:</p>
+
+      <input type="button" onclick="myFunctionPhoto()" value="Add Your Photo" />
+          <img id="photo" src="https://raw.github.com/metrony/pinxp/master/images/Molly-125px.jpg" /><BR / ><BR / >
+          
+        
+         <input type="button" onclick="myFunction2()" value="Add Your Name" />
+         <input type="text" id="fname" name="fname" value="first name">
+         <input type="text" id="lname" name="lname" value="last name"><BR / >
+         
+         <input type="text" id="address1" name="address1" value="Adress1"><BR / >
+         <input type="text" id="address2" name="address2" value="Adress2"><BR / >
+         <input type="text" id="city" name="city" value="city"><BR / >
+         <input type="text" id="state" name="state" value="state">
+         <input type="zip" id="zip" name="zip" value="zip or postal code">
+         <input type="country" id="country" name="country" value="country">
+        <BR /><BR />REPLICATE A SECTION
         
         
                 
