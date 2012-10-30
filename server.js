@@ -35,11 +35,19 @@ app.get('/', function(req, res){
     + '</form>');
 });
 
+app.get('/api/get_files', function(req, res, next){
+  var session = req.query.session;
+  var images = fs.readdirSync(__dirname + '/uploads/' + session);
+  var i = 1;
+  images = images.map(function(x){return {name: 'drag' + i++, 'filepath': '/uploads/' + session + '/' + x};});
+  res.send({'images': images});
+});
+
 app.post('/api/upload_file', function(req, res, next){
     
   // the uploaded file can be found as `req.files.image` and the
   // session is harcoded to aaron for now
-  req.body.session = 'aaron';
+  //req.body.session = 'aaron';
   var destDir = __dirname + '/uploads/' + req.body.session;
   var destFilename = destDir  + '/' + req.files.image.name;
   //if the output directory does not exist - create it
@@ -73,6 +81,8 @@ app.post('/api/upload_file', function(req, res, next){
 });
 
 if (!module.parent) {
-  app.listen(process.env.PORT, process.env.IP);
-  console.log('Express started on port ' + process.env.PORT);
+  var port = process.env.PORT || 8000;
+  var ip = process.env.IP || "0.0.0.0";
+  app.listen(port, ip);
+  console.log('Express started on port ' + port);
 }
