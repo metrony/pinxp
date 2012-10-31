@@ -16,6 +16,36 @@
         <!--[if lt IE 9]>
           <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+        <script>
+        function GUID ()
+        {
+            var S4 = function ()
+            {
+                return Math.floor(
+                        Math.random() * 0x10000 /* 65536 */
+                    ).toString(16);
+            };
+        
+            return (
+                    S4() + S4() + "-" +
+                    S4() + "-" +
+                    S4() + "-" +
+                    S4() + "-" +
+                    S4() + S4() + S4()
+                );
+        }
+
+        function setGuid()
+        {
+            $("#session")[0].value = GUID();    
+        }
+
+
+        $(document).ready(function(){
+            setGuid();
+            
+            })
+        </script>
     </head>
     
     <body>
@@ -25,8 +55,9 @@
 		</header>
         
         <div class="buttons">
-           <form action="index2.html" method="get">
-            <button type="submit" formaction="index2.html" class="buttonstyle">Next Step</button>
+           <form action="index2.html" method="GET">
+           <span style="color:black">Session: </span><input name="session" id="session" type="text" />
+            <button type="submit" class="buttonstyle">Next Step</button>
         </form>
         </div>
 
