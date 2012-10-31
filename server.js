@@ -1,5 +1,8 @@
+/*jshint globalstrict:true laxbreak:true laxcomma:true unused:false es5:true  */
+/*global require:true module:true __dirname:true console:true process:true*/
+
 'use strict';
-/*jshint laxbreak:true laxcomma:true unused:false*/
+
 /**
  * Module dependencies.
  */
@@ -14,7 +17,7 @@ var app = module.exports = express();
 // bodyParser in connect 2.x uses node-formidable to parse form data and uploads
 //this library makes handling form uploads easy.  keepExtension keeps the '.png/.gif' ext in the name
 app.use(express.bodyParser({
-                            keepExtensions: true 
+                            keepExtensions: true
                             //uploadDir: __dirname + '/images/tmp'
                             }
                            ));
@@ -32,19 +35,27 @@ app.get('/', function(req, res){
     + '</form>');
 });
 
+app.get('/api/get_files', function(req, res, next){
+  var session = req.query.session;
+  var images = fs.readdirSync(__dirname + '/uploads/' + session);
+  var i = 1;
+  images = images.map(function(x){return {name: 'drag' + i++, 'filepath': '/uploads/' + session + '/' + x};});
+  res.send({'images': images});
+});
+
 app.post('/api/upload_file', function(req, res, next){
     
   // the uploaded file can be found as `req.files.image` and the
   // session is harcoded to aaron for now
-  req.body.session = 'aaron';
+  //req.body.session = 'aaron';
   var destDir = __dirname + '/uploads/' + req.body.session;
-  var destFilename = destDir  + '/' + req.files.image.name
+  var destFilename = destDir  + '/' + req.files.image.name;
   //if the output directory does not exist - create it
   //something like /uploads/aaron/
   try {
         fs.statSync(destDir);
     } catch (err) {
-        fs.mkdirSync(destDir); 
+        fs.mkdirSync(destDir);
     }
   
   //if the file upload is not there - log it.  Really should error out here.  This is fatal
@@ -53,7 +64,7 @@ app.post('/api/upload_file', function(req, res, next){
   //copy file from its tmp upload space to /uploads/{sessionName}
   //fs.renameSync(req.files.image.path,destFilename);
   //cloud9 has /tmp and this dir on different partitions so a simple rename will not work.  Need to move the bits across in code
-  var is = fs.createReadStream(req.files.image.path)
+  var is = fs.createReadStream(req.files.image.path);
   var os = fs.createWriteStream(destFilename);
   util.pump(is, os, function() {
      //file is moved - del the tmp file
@@ -70,6 +81,8 @@ app.post('/api/upload_file', function(req, res, next){
 });
 
 if (!module.parent) {
-  app.listen(process.env.PORT, process.env.IP);
-  console.log('Express started on port ' + process.env.PORT);
+  var port = process.env.PORT || 8000;
+  var ip = process.env.IP || "0.0.0.0";
+  app.listen(port, ip);
+  console.log('Express started on port ' + port);
 }
