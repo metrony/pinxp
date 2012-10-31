@@ -17,9 +17,11 @@ height: 350px;
 width: 250px;
 }
 
+.ui-widget-header p, .ui-widget-content p { margin: 0; }
+
+/* old styles
 .draggable { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;
 cursor:move; border-style:dashed;border-color:#eb1e25;}
-.ui-widget-header p, .ui-widget-content p { margin: 0; }
 
 #draggable2.draggable, #draggable2 img {width:125px; height:450px;}
 #draggable3.draggable, #draggable3 img {width:250px;height:157px;}
@@ -30,7 +32,9 @@ cursor:move; border-style:dashed;border-color:#eb1e25;}
 #draggable5 textarea {height:150px; width:125px;padding:0;margin:0;}
 
 #draggable6.draggable, #draggable6 img {width:250px; height:162px;}
-
+*/
+.draggable {float: left; margin: 0 10px 10px 0; 
+cursor:move; border-style:dashed;border-color:#eb1e25;}
 
 /* ------------- Below styles are for the new page */
 
@@ -44,7 +48,7 @@ border-color:#eb1e25;
 color:#ffffff
 }
 
-//.draggable { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
+/*.draggable { width: 250px; height:350px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
 .draggable {padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em;cursor:move }
 
 
@@ -59,4 +63,8 @@ color:#ffffff
 #drag5 textarea {height:150px; width:125px;padding:0;margin:0;}
 
 #drag6.draggable, #drag6 img {width:250px; height:162px;}
+<<<<<<< HEAD
 
+=======
+*/
+>>>>>>> d8a8f2f896e6275bca7f1157c6bbe45e3fcc4dde
