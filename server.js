@@ -43,6 +43,21 @@ app.get('/api/get_files', function(req, res, next){
   res.send({'images': images});
 });
 
+app.post('/api/save_resume', function(req, res, next){
+  var destDir = __dirname + '/uploads/' + req.body.session;
+  //if the output directory does not exist - create it
+  //something like /uploads/aaron/
+  try {
+        fs.statSync(destDir);
+    } catch (err) {
+        fs.mkdirSync(destDir);
+    }
+    var dataurl = req.body.dataurl.slice(22);
+    var decoded = new Buffer(dataurl, 'base64');
+    fs.writeFileSync(destDir + '/resume.png', decoded, function(err) {});
+    res.send({'ok':'http://pinxp.metrony.c9.io//uploads/' + req.body.session + '/resume.png'});
+});
+
 app.post('/api/upload_file', function(req, res, next){
     
   // the uploaded file can be found as `req.files.image` and the
