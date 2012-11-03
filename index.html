@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,8 +55,8 @@
 		</header>
         
         <div class="buttons">
-           <form action="index2.html" method="GET">
-           <span style="color:black">Session: </span><input name="session" id="session" type="text" />
+           <form action="index3.html" method="GET">
+           <input name="session" id="session" type="hidden"/>
             <button type="submit" class="buttonstyle">Next Step</button>
         </form>
         </div>
@@ -80,86 +79,3 @@
     
     </body>
 </html>
-=======
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>HTML5 File Drag and Drop Upload with jQuery and PHP</title>
-                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="pin-styles.css">
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
-
-     
-        
-        <!-- Our CSS stylesheet file -->
-        <link rel="stylesheet" href="assets/css/styles.css" />
-        
-        <!--[if lt IE 9]>
-          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <script>
-        function GUID ()
-        {
-            var S4 = function ()
-            {
-                return Math.floor(
-                        Math.random() * 0x10000 /* 65536 */
-                    ).toString(16);
-            };
-        
-            return (
-                    S4() + S4() + "-" +
-                    S4() + "-" +
-                    S4() + "-" +
-                    S4() + "-" +
-                    S4() + S4() + S4()
-                );
-        }
-
-        function setGuid()
-        {
-            $("#session")[0].value = GUID();    
-        }
-
-
-        $(document).ready(function(){
-            setGuid();
-            
-            })
-        </script>
-    </head>
-    
-    <body>
-        
-        <header>
-            <h1>PinPix File Upload</h1>
-        </header>
-        
-        <div class="buttons">
-           <form action="index3.html" method="GET">
-           <input name="session" id="session" type="hidden" />
-            <button type="submit" class="buttonstyle">Next Step</button>
-        </form>
-        </div>
-
-        <div id="dropbox">
-            <span class="message">Drop images here to upload. <br /></span>
-        </div>
-        
-        <footer>
-            <h2>PinPix File Upload &copy; 2012</h2>
-
-        </footer>
-   
-        
-        <!-- Including the HTML5 Uploader plugin -->
-        <script src="assets/js/jquery.filedrop.js"></script>
-        
-        <!-- The main script file -->
-        <script src="assets/js/script.js"></script>
-    
-    </body>
-</html>
->>>>>>> d8a8f2f896e6275bca7f1157c6bbe45e3fcc4dde
