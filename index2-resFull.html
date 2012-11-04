@@ -1,0 +1,354 @@
+<!<!DOCTYPE html>
+<html>
+    <head>
+        <title>PinRes - Resume Pinner</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+        
+        <script src="resume-scripts.js"></script>
+        <link rel="stylesheet" type="text/css" href="resume-style.css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+     
+        <style src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css"></style>
+        
+        
+            <script type="text/javascript" src="lib/jquery/jquery-1.4.2.js"></script>
+		<script type="text/javascript" src="lib/jquery/jquery-ui-1.8.2.custom.min.js"></script>
+		<script type="text/javascript" src="jquery-dynamic-form.js"></script>
+        
+            
+    
+    
+    <script>
+       function GUID ()
+        {
+            var S4 = function ()
+            {
+                return Math.floor(
+                        Math.random() * 0x10000 /* 65536 */
+                    ).toString(16);
+            };
+        
+            return (
+                    S4() + S4() + "-" +
+                    S4() + "-" +
+                    S4() + "-" +
+                    S4() + "-" +
+                    S4() + S4() + S4()
+                );
+        }
+
+        function setGuid()
+        {
+            $("#session")[0].value = GUID();    
+        }
+
+
+    
+    
+    //FORM VALIDATION
+        function validateForm()
+        {
+        var x=document.forms["myForm"]["fname"].value;
+        if (x==null || x=="")
+          {
+          alert("First name must be filled out");
+          return false;
+          }
+        }
+    
+    // MAKE THE PHOTO DRAGGABLE
+    
+        function allowDrop(ev)
+    {
+    ev.preventDefault();
+    }
+    
+    function drag(ev)
+    {
+    ev.dataTransfer.setData("Text",ev.target.id);
+    }
+    
+    function drop(ev)
+    {
+    ev.preventDefault();
+    var data=ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+    }
+
+
+        
+        
+    //ADD A SEPRATOR
+      function mySeparator()
+    {
+        
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    
+      //Draw a red line at y=200
+    ctx.strokeStyle="red";
+    ctx.moveTo(5,200);
+    ctx.lineTo(395,200);
+    ctx.stroke();
+    
+    }
+
+
+
+    //ADD COLOR
+    function myFunctionColor()
+    {
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    
+    // Create gradient
+    var grd=ctx.createLinearGradient(0,0,200,0);
+    grd.addColorStop(0,"red");
+    grd.addColorStop(1,"white");
+    
+    // Fill with gradient
+    ctx.fillStyle=grd;
+    ctx.fillRect(0,0,250,100);
+    }
+
+
+    //ADD YOUR NAME
+    function myFunctionNameLine()
+     {
+        var vfname=document.getElementById('fname').value;
+        var vlname=document.getElementById('lname').value;
+        //alert(fname);
+        
+        var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        
+        ctx.fillStyle = "#ffc0c0";
+        // For Testing Only So You Can See the Rectangle that will be Cleared 
+        ctx.fillRect(10, 35, 290,100);
+        
+        //Clears the Line for New Text
+        //ctx.clearRect(10, 35, 290,15);
+        
+        ctx.fillStyle = "#000000";
+        ctx.font         = 'bold 20px sans-serif';
+        ctx.fillText(vfname+ " " + vlname,10,50);    
+        
+        //Draw a red line at y=200
+        ctx.strokeStyle="red";
+        ctx.moveTo(10,55);
+        ctx.lineTo(395,55);
+        ctx.stroke();
+            
+        
+    //writeDataUrl()
+    }
+    
+    
+     function myFunctionAddressLine1()
+     {
+          
+        var vaddress1=document.getElementById('address1').value;
+              
+        var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        
+        ctx.fillStyle = "#c0ffc0";
+        // For Testing Only So You Can See the Rectangle that will be Cleared 
+        ctx.fillRect(5, 62, 290,10);
+        
+        //Clears the Line for New Text Rect(x, y, width,height)
+        //ctx.clearRect(5, 50, 290,10);
+        
+        ctx.fillStyle = "#000000";
+        ctx.font     = 'bold 10px sans-serif';
+        ctx.fillText(vaddress1,10,70);          
+            
+        
+   // writeDataUrl()
+    }
+    
+    function myFunctionAddressLine2()
+     {
+        var vaddress2=document.getElementById('address2').value;
+              
+        var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        
+        ctx.fillStyle = "#c0ceff";
+        // For Testing Only So You Can See the Rectangle that will be Cleared 
+        ctx.fillRect(10, 75, 290,10);
+        
+        //Clears the Line for New Text
+        //ctx.clearRect(10, 75, 290,10);
+        
+        ctx.fillStyle = "#000000";
+        ctx.font     = 'bold 10px sans-serif';
+        ctx.fillText(vaddress2,10,85);          
+            
+        
+    //writeDataUrl()
+    }
+    
+     function myFunctionCityLine()
+     {
+        var vcity=document.getElementById('city').value;
+        var vstate=document.getElementById('state').value;
+        var vzip=document.getElementById('zip').value;
+    
+        var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        
+        ctx.fillStyle = "#eeffc0";
+        // For Testing Only So You Can See the Rectangle that will be Cleared 
+        ctx.fillRect(10, 94, 290,10);
+        
+        //Clears the Line for New Text
+        //ctx.clearRect(10, 70, 290,10);
+        
+        ctx.fillStyle = "#000000";
+        ctx.font     = 'bold 10px sans-serif';
+        ctx.fillText(vcity + ", " + vstate + " " + vzip,10,100);          
+            
+        
+    //writeDataUrl()
+    }
+    
+     function myFunctionCountryLine()
+     {
+        var vcountry=document.getElementById('country').value;
+                
+        var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        
+        ctx.fillStyle = "#c0c0c0";
+        // For Testing Only So You Can See the Rectangle that will be Cleared 
+        ctx.fillRect(10, 113, 290,10);
+        
+        //Clears the Line for New Text
+        //ctx.clearRect(10, 80, 290,10);
+        
+        ctx.fillStyle = "#000000";
+        ctx.font     = 'bold 10px sans-serif';
+        ctx.fillText(vcountry,10,120);          
+            
+        
+    //writeDataUrl()
+    }
+    
+    
+        
+    function myFunctionPhoto()
+    {
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    var img=document.getElementById("photo");
+     //alert("hi");
+    ctx.drawImage(img,10,10);
+    }
+    
+    
+    // loaded automatically on page load
+window.onload = function() {
+    var div = document.getElementById("canvasDiv");
+    var canvas = document.getElementById("myCanvas");
+    canvas.height = div.offsetHeight;
+    canvas.width  = div.offsetWidth;
+}
+
+var writeDataUrl = function(){
+     var c=document.getElementById("myCanvas");
+    $('#dataurl')[0].value=    c.toDataURL();
+       $("#session")[0].value = GUID();   
+    }
+  
+    </script>
+
+
+    </head>
+<body>
+    <div class="header"><img src="images/PinRes-Resume.jpg">
+    </div>        
+    
+    <div class="demo-description">
+        <p>Build a Resume Inforgraphic to Pin - DEMO</p>
+    </div>
+    
+    
+    <div class="container demo">
+        <div class="row">
+        
+        <div id="canvasDiv" class="span4">
+            <!--- LEFT COLUMN --->
+                <canvas id="myCanvas" width="250" height="500" style="border:1px solid #000000;">
+            </canvas>       
+        </div>
+        <div class="span8"> <!---- RIGHT COLUMN-->
+        <!--COLOR:<BR / >
+       <input type="button" onclick="myFunctionColor()" value="Add Color" /><BR / ><BR / >
+        ADD A SEPARATOR - make this replicable and draggable<BR />
+          <input type="button" onclick="mySeparator()" value="Add a Separator" /><BR /><BR / >
+          -->
+          
+          <p>About You:</p>
+
+         <input type="button" onclick="myFunctionPhoto()" value="Add Your Photo" />
+         <img id="photo" src="https://raw.github.com/metrony/pinxp/master/images/Molly-125px.jpg" /><BR / ><BR / >
+          
+        
+         <!--<input type="button" onclick="myFunction2()" value="Add Your Name" /> -->
+         <input type="text" id="fname" name="fname" value="first name" onblur="myFunctionNameLine();">
+        
+         <input type="text" id="lname" size="28" value="last name" onblur="myFunctionNameLine();">
+      
+         
+         <input type="text" id="address1" name="address1" value="Address 1" onblur="myFunctionAddressLine1();"><BR / >
+        <input type="text" id="address2" name="address2" value="Address 2" onblur="myFunctionAddressLine2();"><BR / >
+         <input type="text" id="city" value="city" onblur="myFunctionCityLine();"><input type="text" id="state" value="state or province" onblur="myFunctionCityLine();"><input type="text" id="zip" size="10" value="zip or postal" onblur="myFunctionCityLine();"><BR / >
+         <input type="text" id="country" value="country" onblur="myFunctionCountryLine();">
+         
+        <BR /><BR />NEED TO ADD TEXT MEASURE and WRAP
+        <!-- BEGIN JOBS SECTION -->
+            <form method="post" action="#" value="Post">
+			<fieldset>
+				<h2>Employment History</h2>
+		
+				<fieldset id="people">
+					
+				<h3>Fill In Your Information</h3>
+                    <p><label for="employer_name">Employer Name: </label><input id="employer_name" type="text" name="employer_name" size="30"></p>
+    				<p><label for="address">Location: </label><input id="address" type="text" name="adr" size="30"></p>
+    				
+    				<p><label for="city">Date Range: </label><input id="date" type="text" name="date" size="50"></p>
+    				
+    				<p id='phoneTemplate'><label for="phone">Skills: </label><input id="phone" type="text" name="phone" size="50"></p>
+                    
+    				<p><span class="adder">Add Another Skill <a id="minus5" href="">[-]</a> <a id="plus5" href="">[+]</a></span></p>
+    				
+    				<!--<p id='phone2Template'><label for="phone2">telephone 2 : </label><input id="phone2" type="text" name="phone2" size="50"><br /> -->
+				   <!-- <label for="professionnal">Professional ?</label><input id="professionnal" type="checkbox" value="pro" name="phonePro" /> <br />-->
+				   <p><label for="description">Description</label><textarea id="description" name="description" rows="4" cols="50" maxlength="50"></textarea>
+				   </p>
+                   <span style="clear:none; float:right;"><a id="minus6" href="">[-]</a> <a id="plus6" href="">[+]</a></span></p>
+			
+
+				</fieldset>
+				<p><span class="adder">Add Another Position: <a id="minus" href="">[-]</a> <a id="plus" href="">[+]</a></span></p>
+			</fieldset>
+			<input type="submit" />
+		</form>
+        
+        <!-- END JOBS SECTION -->
+       
+        </div><!---- END RIGHT BAR DIV-->
+        </div><!-- ends row-fluid div -->
+    </div><!-- ends fluid demo div -->
+   
+    <form action="/api/save_resume" method="POST">
+        <input type="hidden" name="session" id="session"></input>
+        <textarea id="dataurl" name="dataurl"></textarea>
+        <input type="submit"/>
+    </form>
+</body>
+</html>
