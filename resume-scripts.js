@@ -1,4 +1,3 @@
-    <script type="text/javascript">
 			$(document).ready(function(){
 				
 				//Activate the main dynamic form
@@ -72,4 +71,39 @@
 				//Inject the data in the main form for prefilling
 				mainDynamicForm.inject(data);
 			});
-		</script>
+            
+            
+            
+            
+            
+       function myFxEmployer()
+     {
+        var vemployer_name=document.getElementById('employer_name').value;
+        var vaddress=document.getElementById('address').value;
+        var vdate=document.getElementById('date').value;
+        
+        
+
+        //var n = str1.concat(str2); 
+        //var n = str1.concat(str2,str3);
+        //var nmystring = str1.concat(document.getElementById('employer_name').value,document.getElementById('address').value, document.getElementById('date').value);
+        //var nmystring = str1.concat(vemployer_name,vaddress, vdate);
+        alert(vemployer_name);
+        
+        var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        
+        ctx.fillStyle = "#c0c0c0";
+        // For Testing Only So You Can See the Rectangle that will be Cleared 
+        ctx.fillRect(10, 145, 290,10);
+        
+        //Clears the Line for New Text
+        //ctx.clearRect(10, 80, 290,10);
+        
+        ctx.fillStyle = "#000000";
+        ctx.font     = 'bold 10px sans-serif';
+        ctx.fillText(nmystring,10,150);          
+            
+        
+    //writeDataUrl()
+    }
