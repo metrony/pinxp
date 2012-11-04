@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>PinRes - Resume Pinner</title>
@@ -8,17 +8,19 @@
         <script src="resume-scripts.js"></script>
         <link rel="stylesheet" type="text/css" href="resume-style.css">
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
-
+        
      
         <style src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css"></style>
         
         
-            <script type="text/javascript" src="lib/jquery/jquery-1.4.2.js"></script>
+        <script type="text/javascript" src="lib/jquery/jquery-1.4.2.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-ui-1.8.2.custom.min.js"></script>
 		<script type="text/javascript" src="jquery-dynamic-form.js"></script>
         
-            
-    
+        <script type="text/javascript" src="http://cloud.github.com/downloads/kangax/fabric.js/0.9.15.min.js"></script>
+        <script type="text/javascript" src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/Times_New_Roman.font.js"></script>            
+        <script type="text/javascript" src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/DejaVu_Serif_400.font.js"></script>            
+ 
     
     <script>
        function GUID ()
@@ -80,7 +82,7 @@
 
         
         
-    //ADD A SEPRATOR
+    //ADD A SEPARATOR
       function mySeparator()
     {
         
@@ -114,7 +116,7 @@
     }
 
 
-    //ADD YOUR NAME
+    //ADD NAME
     function myFunctionNameLine()
      {
         var vfname=document.getElementById('fname').value;
@@ -156,7 +158,7 @@
         
         ctx.fillStyle = "#c0ffc0";
         // For Testing Only So You Can See the Rectangle that will be Cleared 
-        ctx.fillRect(5, 62, 290,10);
+        ctx.fillRect(10, 62, 290,10);
         
         //Clears the Line for New Text Rect(x, y, width,height)
         //ctx.clearRect(5, 50, 290,10);
@@ -261,9 +263,46 @@ var writeDataUrl = function(){
      var c=document.getElementById("myCanvas");
     $('#dataurl')[0].value=    c.toDataURL();
        $("#session")[0].value = GUID();   
-    }
-  
-    </script>
+}
+
+
+
+
+function populatCanvasFromForm(){
+    var text = "";
+    var formAsArray = $("#resForm").serializeArray()
+    $.each(formAsArray,function(idx,x){text += x.name  +":" + x.value + "\n";})
+
+    var textObj = new fabric.Text(text, { 
+          fontFamily: 'DejaVu_Serif_400', 
+          left: 10,
+          top: 10,
+          fontSize: 16,
+         // textAlign: "left",
+          fill:"#FF0000"  // Set text color to red
+      });
+      var canvas = new fabric.Canvas('myCanvas');
+     // var canvas=document.getElementById("myCanvas");
+      canvas.add(textObj);
+      //for testing
+        window.textObj = textObj;
+
+    var textObj2 = new fabric.Text("EXTRA LINES HERE!", { 
+          fontFamily: 'DejaVu_Serif_400', 
+          left: 10,
+          top: textObj.top + textObj.height,
+          fontSize: 16,
+          textAlign: "left",
+          fill:"#FF0000"  // Set text color to red
+      });
+      
+     // var canvas = new fabric.Canvas('myCanvas');
+     // var canvas=document.getElementById("myCanvas");
+      canvas.add(textObj2);
+      
+
+}
+</script>
 
 
     </head>
@@ -272,7 +311,7 @@ var writeDataUrl = function(){
     </div>        
     
     <div class="demo-description">
-        <p>Build a Resume Inforgraphic to Pin - DEMO</p>
+        <p>Build a Resume Infographic to Pin - DEMO</p>
     </div>
     
     
@@ -281,59 +320,61 @@ var writeDataUrl = function(){
         
         <div id="canvasDiv" class="span4">
             <!--- LEFT COLUMN --->
-                <canvas id="myCanvas" width="250" height="500" style="border:1px solid #000000;">
+            <canvas id="myCanvas" width="250" height="1000" style="border:1px solid #000000;">Your Browser Does Not Support This Technology
             </canvas>       
         </div>
-        <div class="span8"> <!---- RIGHT COLUMN-->
-        <!--COLOR:<BR / >
-       <input type="button" onclick="myFunctionColor()" value="Add Color" /><BR / ><BR / >
-        ADD A SEPARATOR - make this replicable and draggable<BR />
-          <input type="button" onclick="mySeparator()" value="Add a Separator" /><BR /><BR / >
-          -->
+        <div class="span8">
+            <!---- RIGHT COLUMN-->
+            <!--COLOR:<BR / >
+            <input type="button" onclick="myFunctionColor()" value="Add Color" /><BR / ><BR / >
+            ADD A SEPARATOR - make this replicable and draggable<BR />
+            <input type="button" onclick="mySeparator()" value="Add a Separator" /><BR /><BR / >
+            -->
           
-          <p>About You:</p>
+             <p>About You:</p>
+            
+            <form method="post" action="#" value="Post" id="resForm">
+            <input type="button" onclick="myFunctionPhoto()" value="Add Your Photo" />
+            <img id="photo" src="https://raw.github.com/metrony/pinxp/master/images/Molly-125px.jpg" /><BR / ><BR / >
+          
+        
+            <!--<input type="button" onclick="myFunction2()" value="Add Your Name" /> -->
+            <input type="text" id="fname" name="fname" value="first name" onblur="myFunctionNameLine();">
+                
+            <input type="text" id="lname" size="28" value="last name" onblur="myFunctionNameLine();">
+              
+                 
+            <input type="text" id="address1" name="address1" value="Address 1" onblur="myFunctionAddressLine1();"><BR / >
+            <input type="text" id="address2" name="address2" value="Address 2" onblur="myFunctionAddressLine2();"><BR / >
+            <input type="text" id="city" value="city" onblur="myFunctionCityLine();"><input type="text" id="state" value="state or province" onblur="myFunctionCityLine();"><input type="text" id="zip" size="10" value="zip or postal" onblur="myFunctionCityLine();"><BR / >
+            <input type="text" id="country" value="country" onblur="myFunctionCountryLine();">
+             
+            <BR /><BR />** NEED TO ADD TEXT MEASURE and WRAP and VALIDATE FORM DATA **
+        
+            <!-- **************** BEGIN JOBS SECTION **************** -->
 
-         <input type="button" onclick="myFunctionPhoto()" value="Add Your Photo" />
-         <img id="photo" src="https://raw.github.com/metrony/pinxp/master/images/Molly-125px.jpg" /><BR / ><BR / >
-          
-        
-         <!--<input type="button" onclick="myFunction2()" value="Add Your Name" /> -->
-         <input type="text" id="fname" name="fname" value="first name" onblur="myFunctionNameLine();">
-        
-         <input type="text" id="lname" size="28" value="last name" onblur="myFunctionNameLine();">
-      
-         
-         <input type="text" id="address1" name="address1" value="Address 1" onblur="myFunctionAddressLine1();"><BR / >
-        <input type="text" id="address2" name="address2" value="Address 2" onblur="myFunctionAddressLine2();"><BR / >
-         <input type="text" id="city" value="city" onblur="myFunctionCityLine();"><input type="text" id="state" value="state or province" onblur="myFunctionCityLine();"><input type="text" id="zip" size="10" value="zip or postal" onblur="myFunctionCityLine();"><BR / >
-         <input type="text" id="country" value="country" onblur="myFunctionCountryLine();">
-         
-        <BR /><BR />NEED TO ADD TEXT MEASURE and WRAP
-        <!-- BEGIN JOBS SECTION -->
-            <form method="post" action="#" value="Post">
 			<fieldset>
 				<h2>Employment History</h2>
 		
 				<fieldset id="people">
 					
 				<h3>Fill In Your Information</h3>
-                    <p><label for="employer_name">Employer Name: </label><input id="employer_name" type="text" name="employer_name" size="30"></p>
-    				<p><label for="address">Location: </label><input id="address" type="text" name="adr" size="30"></p>
+                    <p><label for="employer_name">Employer Name: </label><input id="employer_name" type="text" name="employer_name" size="30" onblur="myFxEmployer();"></p>
+    				<p><label for="address">Location: </label><input id="address" type="text" name="adr" size="30" onblur="myFxEmployer();"></p>
     				
-    				<p><label for="city">Date Range: </label><input id="date" type="text" name="date" size="50"></p>
+    				<p><label for="city">Date Range: </label><input id="date" type="text" name="date" size="50" onblur="myFxEmployer();"></p>
     				
     				<p id='phoneTemplate'><label for="phone">Skills: </label><input id="phone" type="text" name="phone" size="50"></p>
                     
     				<p><span class="adder">Add Another Skill <a id="minus5" href="">[-]</a> <a id="plus5" href="">[+]</a></span></p>
     				
     				<!--<p id='phone2Template'><label for="phone2">telephone 2 : </label><input id="phone2" type="text" name="phone2" size="50"><br /> -->
-				   <!-- <label for="professionnal">Professional ?</label><input id="professionnal" type="checkbox" value="pro" name="phonePro" /> <br />-->
-				   <p><label for="description">Description</label><textarea id="description" name="description" rows="4" cols="50" maxlength="50"></textarea>
-				   </p>
-                   <span style="clear:none; float:right;"><a id="minus6" href="">[-]</a> <a id="plus6" href="">[+]</a></span></p>
-			
-
+				    <!-- <label for="professionnal">Professional ?</label><input id="professionnal" type="checkbox" value="pro" name="phonePro" /> <br />-->
+    				<p><label for="description">Description</label><textarea id="description" name="description" rows="4" cols="50" maxlength="50"></textarea>
+    				</p>
+                   
 				</fieldset>
+                
 				<p><span class="adder">Add Another Position: <a id="minus" href="">[-]</a> <a id="plus" href="">[+]</a></span></p>
 			</fieldset>
 			<input type="submit" />
