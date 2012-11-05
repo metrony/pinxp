@@ -1,7 +1,8 @@
-## pinxp
+# pinxp
 
 node_modules/
 uploads/
+.c9revision/
 
 #################
 ## Eclipse
