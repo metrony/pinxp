@@ -75,3 +75,11 @@
 {"ts":1352002876312,"patch":[[{"diffs":[[0,".value, "],[-1,"vdat"],[1,"document.getElementById('date').valu"],[0,"e);\r\n   "]],"start1":2574,"start2":2574,"length1":20,"length2":52}]],"length":3280,"saved":false}
 {"ts":1352002896353,"patch":[[{"diffs":[[0,"  \r\n"],[-1,"        var txt1 = \"Hello \";\r\nvar txt2 = \"world!\";\r\nvar txt3=\" Have a nice day!\";\r\nvar n=txt1.concat(txt2,txt3);"],[0,"\r\n\r\n"]],"start1":2253,"start2":2253,"length1":120,"length2":8}]],"length":3168,"saved":false}
 {"ts":1352002897207,"patch":[[{"diffs":[[0,"    \r\n\r\n"],[-1,"\r\n"],[0,"        "]],"start1":2251,"start2":2251,"length1":18,"length2":16}]],"length":3166,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1352075208338,"patch":[[{"diffs":[[0,"/XXXX\",\r\n\t\t\t\t\t\t\""],[-1,"phone"],[1,"skill"],[0,"Template\" :[\r\n\t\t"]],"start1":760,"start2":760,"length1":37,"length2":37}]],"length":3166,"saved":false}
+{"ts":1352075211868,"patch":[[{"diffs":[[0,"\t\t\t\t\t\t{\""],[-1,"phone"],[1,"skill"],[0,"\":\"1\", \""]],"start1":796,"start2":796,"length1":21,"length2":21}]],"length":3166,"saved":false}
+{"ts":1352075216029,"patch":[[{"diffs":[[0,"\t\t\t\t\t\t{\""],[-1,"phone"],[1,"skill"],[0,"\":\"2\", \""]],"start1":838,"start2":838,"length1":21,"length2":21}]],"length":3166,"saved":false}
+{"ts":1352075220182,"patch":[[{"diffs":[[0,"\t\t\t\t\t\t{\""],[-1,"phone"],[1,"skill"],[0,"\":\"3\", \""]],"start1":882,"start2":882,"length1":21,"length2":21}]],"length":3166,"saved":false}
+{"ts":1352075256857,"patch":[[{"diffs":[[0,"\n\t\t\t\t$(\""],[-1,"#phone"],[0,"Template"]],"start1":419,"start2":419,"length1":22,"length2":16}]],"length":3160,"saved":false}
+{"ts":1352075258373,"patch":[[{"diffs":[[0,"\n\t\t\t\t$(\""],[1,"#skill"],[0,"Template"]],"start1":419,"start2":419,"length1":16,"length2":22}]],"length":3166,"saved":false}
+{"ts":1352075268299,"patch":[[{"diffs":[[0,"ix:\""],[-1,"mainPhone"],[1,"skills"],[0,"\"});"]],"start1":495,"start2":495,"length1":17,"length2":14}]],"length":3163,"saved":false}
+{"ts":1352075272601,"patch":[[{"diffs":[[0,"x:\"skill"],[-1,"s"],[0,"\"});\r\n\t\t"]],"start1":496,"start2":496,"length1":17,"length2":16}]],"length":3162,"saved":false}

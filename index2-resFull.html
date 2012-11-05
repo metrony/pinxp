@@ -46,7 +46,13 @@
             $("#session")[0].value = GUID();    
         }
 
-
+// add startswith to javascript strings
+if (typeof String.prototype.startsWith != 'function') {
+  // see below for better implementation!
+  String.prototype.startsWith = function (str){
+    return this.indexOf(str) == 0;
+  };
+}
     
     
     //FORM VALIDATION
@@ -263,6 +269,7 @@ var writeDataUrl = function(){
      var c=document.getElementById("myCanvas");
     $('#dataurl')[0].value=    c.toDataURL();
        $("#session")[0].value = GUID();   
+       $("#resformdata")[0].value = $(":input ").serializeArray()
 }
 
 
@@ -270,36 +277,58 @@ var writeDataUrl = function(){
 
 function populatCanvasFromForm(){
     var text = "";
-    var formAsArray = $("#resForm").serializeArray()
-    $.each(formAsArray,function(idx,x){text += x.name  +":" + x.value + "\n";})
+   // var formAsArray = $("#resForm").serializeArray()
+   // $.each(formAsArray,function(idx,x){text += x.name  +":" + x.value + "\n";}) HUGE STRING FOR NAME N ADDRESS
 
-    var textObj = new fabric.Text(text, { 
+    //get a reference to the the canvas on the page and wrap it in the Fabric lib
+    var canvas = new fabric.Canvas('myCanvas');
+      
+    //Add the first block of text
+   var vfname=document.getElementById('fname').value;
+   var vlname=document.getElementById('lname').value;
+    //create the fabric text object
+    var textObj = new fabric.Text(vfname + " " + vlname , { 
           fontFamily: 'DejaVu_Serif_400', 
           left: 10,
           top: 10,
-          fontSize: 16,
+          fontSize: 24,
          // textAlign: "left",
-          fill:"#FF0000"  // Set text color to red
+          fill:"#FF00F0"  // Set text color to red
       });
-      var canvas = new fabric.Canvas('myCanvas');
-     // var canvas=document.getElementById("myCanvas");
+    
+      //compute the top and left given that the fabric uses top,left for the CENTER of the object
+      textObj.top = Math.floor(textObj.height /2) + 1;
+      textObj.left = Math.floor(textObj.width /2) + 1;
+      //finally ADD  the textObj to the canvas
       canvas.add(textObj);
-      //for testing
-        window.textObj = textObj;
-
-    var textObj2 = new fabric.Text("EXTRA LINES HERE!", { 
+    
+      //Add next object dupe thhis for joB
+            //get all the form items
+      $("#job_history :input").each(function(idx,item){
+         
+            text += item.value + "\n"
+      })
+      
+      
+      var textObj2 = new fabric.Text(text, { 
           fontFamily: 'DejaVu_Serif_400', 
-          left: 10,
-          top: textObj.top + textObj.height,
+          left: 0,
+          top: 0,
           fontSize: 16,
           textAlign: "left",
           fill:"#FF0000"  // Set text color to red
       });
       
-     // var canvas = new fabric.Canvas('myCanvas');
-     // var canvas=document.getElementById("myCanvas");
+      //Calculate the CENTER of the object that needs to follow
+      textObj2.top  = textObj.height + Math.floor(textObj2.height /2) + 5;
+      //width is only dependant on this obj, not the previous one
+      textObj2.left = Math.floor(textObj2.width /2) + 1;
+  
+      //Add second obj to canvas
       canvas.add(textObj2);
       
+      
+
 
 }
 </script>
@@ -353,7 +382,7 @@ function populatCanvasFromForm(){
         
             <!-- **************** BEGIN JOBS SECTION **************** -->
 
-			<fieldset>
+			<fieldset id="job_history">
 				<h2>Employment History</h2>
 		
 				<fieldset id="people">
@@ -364,7 +393,7 @@ function populatCanvasFromForm(){
     				
     				<p><label for="city">Date Range: </label><input id="date" type="text" name="date" size="50" onblur="myFxEmployer();"></p>
     				
-    				<p id='phoneTemplate'><label for="phone">Skills: </label><input id="phone" type="text" name="phone" size="50"></p>
+    				<p id='skillTemplate'><label for="skill">Skills: </label><input id="skill" type="text" name="skill" size="50"></p>
                     
     				<p><span class="adder">Add Another Skill <a id="minus5" href="">[-]</a> <a id="plus5" href="">[+]</a></span></p>
     				
@@ -377,7 +406,7 @@ function populatCanvasFromForm(){
                 
 				<p><span class="adder">Add Another Position: <a id="minus" href="">[-]</a> <a id="plus" href="">[+]</a></span></p>
 			</fieldset>
-			<input type="submit" />
+			<input type="button" onclick="populatCanvasFromForm()" value="submit" />
 		</form>
         
         <!-- END JOBS SECTION -->
@@ -388,6 +417,7 @@ function populatCanvasFromForm(){
    
     <form action="/api/save_resume" method="POST">
         <input type="hidden" name="session" id="session"></input>
+          <input type="hidden" name="resformdata" id="resformdata"></input>
         <textarea id="dataurl" name="dataurl"></textarea>
         <input type="submit"/>
     </form>

@@ -13,7 +13,7 @@
 				});
 			
 				//Activate two nested dynamic form
-				$("#phoneTemplate").dynamicForm("#plus5", "#minus5", {limit:5, formPrefix:"mainPhone"});
+				$("#skillTemplate").dynamicForm("#plus5", "#minus5", {limit:5, formPrefix:"skill"});
 				$("#phone2Template").dynamicForm("#plus6", "#minus6", {limit:5,
 					createColor:"red"});
 				
@@ -23,10 +23,10 @@
 						"adr" : "A",
 						"employer_name" : "B",
 						"date" : "XX/XX/XXXX",
-						"phoneTemplate" :[
-							{"phone":"1", "phoneType":"pro"},
-							{"phone":"2", "phoneType":"perso"},
-							{"phone":"3", "phoneType":"perso"}
+						"skillTemplate" :[
+							{"skill":"1", "phoneType":"pro"},
+							{"skill":"2", "phoneType":"perso"},
+							{"skill":"3", "phoneType":"perso"}
 						],
 						"phone2Template" :[
 							{"phone2":"bar", "phonePro":true, more_info:"This is filled with more information"},
