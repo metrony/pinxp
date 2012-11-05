@@ -95,6 +95,20 @@ app.post('/api/upload_file', function(req, res, next){
     , req.body.session) });
 });
 
+app.post('/api/compose', function(req, res, next){
+  
+  //load Base
+  var baseFile = req.body.layout.filepath;
+  console.log(baseFile);
+  //if the file upload is not there - log it.  Really should error out here.  This is fatal
+  if (!fs.statSync(baseFile)){ console.log('Error - No file');}
+  var image = req.body.images[0];
+  console.log("merge " +  image.filepath + " at " + image.x + "x" + image.y);
+
+  //let the browser know all is well.
+  res.send({'result': baseFile });
+});
+
 if (!module.parent) {
   var port = process.env.PORT || 8000;
   var ip = process.env.IP || "0.0.0.0";
