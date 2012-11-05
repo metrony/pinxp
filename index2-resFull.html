@@ -21,8 +21,9 @@
         <script type="text/javascript" src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/Times_New_Roman.font.js"></script>            
         <script type="text/javascript" src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/DejaVu_Serif_400.font.js"></script>            
  
+      <script type="text/javascript" src="lib/pinterest-plus-html5.min.js"></script>
     
-    <script>
+    <script type="text/javascript">
        function GUID ()
         {
             var S4 = function ()
@@ -46,14 +47,7 @@
             $("#session")[0].value = GUID();    
         }
 
-// add startswith to javascript strings
-if (typeof String.prototype.startsWith != 'function') {
-  // see below for better implementation!
-  String.prototype.startsWith = function (str){
-    return this.indexOf(str) == 0;
-  };
-}
-    
+
     
     //FORM VALIDATION
         function validateForm()
@@ -275,7 +269,7 @@ var writeDataUrl = function(){
 
 
 
-function populatCanvasFromForm(){
+function populatCanvasFromForm(){ 
     
     //alert("hi");
     var text = "";
@@ -369,10 +363,44 @@ function populatCanvasFromForm(){
           //Add THIRD obj to canvas
           canvas.add(textObj3);
     //END EMPLOYMENT Section(s) ----
-
+      writeDataUrl();
 }
-</script>
 
+
+//NEW Code for pinbutton
+/*
+1)  add         <script type="text/javascript" src="lib/pinterest-plus-html5.min.js">
+2)where you want to button to show add:
+
+      <div id="pin-it-button" class="pin-it-button" data-url="" data-image="" data-description=""></div>
+
+3) wire up the form on the bottom of the page to call the createResumeImage
+         <input type="button" onclick="createResumeImage()" value="Create image and see PIN button"/> (value does not matter)
+*/
+
+ //setup pintrest button
+ function setupPin(pageUrl, imageUrl, descr){
+     $("#pin-it-button").attr("data-url", pageUrl);
+     $("#pin-it-button").attr("data-image", imageUrl);
+     $("#pin-it-button").attr("data-description", descr);
+     PinterestPlus.pinit()
+  }
+     
+  //this call actually sends the data to the API and upon success renders the pin button
+  function createResumeImage(){
+      if ( $("#dataurl")[0].value.length < 10) {alert("No canvas data to send!");return}
+      $.post('/api/save_resume',{dataurl: $("#dataurl")[0].value,session: $("#session")[0].value }, function(data) {
+          var descr = document.getElementById('fname').value + "'s Resume";
+          /*********
+          *** NOTE: Page url is harccoded here
+          */
+          //data['ok'] will be the image url of the Resume as returned by the API call
+          setupPin("http://pinxp.metrony.c9.io/index3-resFull.html", data['ok'],descr);
+        });
+  }
+
+</script>
+  
 
     </head>
 <body>
@@ -454,12 +482,12 @@ function populatCanvasFromForm(){
         </div><!---- END RIGHT BAR DIV-->
         </div><!-- ends row-fluid div -->
     </div><!-- ends fluid demo div -->
-   
+   <div id="pin-it-button" class="pin-it-button" data-url="" data-image="" data-description=""></div>
     <form action="/api/save_resume" method="POST">
         <input type="hidden" name="session" id="session"></input>
           <input type="hidden" name="resformdata" id="resformdata"></input>
         <textarea id="dataurl" name="dataurl"></textarea>
-        <input type="submit"/>
+        <input type="button" onclick="createResumeImage()" value="Create image and see PIN button"/>
     </form>
 </body>
 </html>
