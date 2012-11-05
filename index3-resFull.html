@@ -19,7 +19,9 @@
         
         <script type="text/javascript" src="//cloud.github.com/downloads/kangax/fabric.js/0.9.15.min.js"></script>
         <script type="text/javascript" src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/Times_New_Roman.font.js"></script>            
-        <script type="text/javascript" src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/DejaVu_Serif_400.font.js"></script>            
+        <script type="text/javascript" src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/DejaVu_Serif_400.font.js"></script>    
+        
+         <script type="text/javascript" src="lib/pinterest-plus-html5.min.js"></script>
  
     
     <script>
@@ -301,9 +303,9 @@ function populatCanvasFromForm(){
     var vcountry=document.getElementById('country').value;
                
       
-    //BEGIN Candidate Name Section ----
-        // BLOCK 1 Create the fabric text object for Cadidate First Name and Last Name
-        var textObj = new fabric.Text(vfname + " " + vlname , { 
+   
+    // BLOCK 1 Create the fabric text object for Cadidate First Name and Last Name
+    var textObj = new fabric.Text(vfname + " " + vlname , { 
           fontFamily: 'DejaVu_Serif_400', 
           left: 10,
           top: 10,
@@ -313,64 +315,98 @@ function populatCanvasFromForm(){
           //backgroundColor: "#ffffff"
       });
     
-          //compute the top and left Coordinates. NOTE that the Fabric js uses top,left for the CENTER of the object
-          textObj.top = Math.floor(textObj.height /2) + 1;
-          textObj.left = Math.floor(textObj.width /2) + 1;
-          //Then ADD the textObj to the Canvas
-          canvas.add(textObj);
-    //END Candidate Name Section ----
+      //compute the top and left Coordinates. NOTE that the Fabric js uses top,left for the CENTER of the object
+      textObj.top = Math.floor(textObj.height /2) + 1;
+      textObj.left = Math.floor(textObj.width /2) + 1;
+      //Then ADD the textObj to the Canvas
+      canvas.add(textObj);
+        //BEGIN Candidate Address Section ----
         
-        
-     //BEGIN Candidate Address Section ----
-          //BLOCK 2 Create the fabric text object for Cadidate ADDRESS
-            var textObj2 = new fabric.Text(vaddress1 + "\n" + vaddress2  + "\n" + vcity + ", " + vstate  + " " + vzip + "\n" + vcountry, { 
-              fontFamily: 'DejaVu_Serif_400', 
-              left: 0,
-              top: 0,
-              fontSize: 20,
-             // textAlign: "left",
-              fill:"#000000",  // Set text color to BLUE
-              //backgroundColor: "#ffffff"
-          });
-          
-           //Calculate the CENTER of the object that needs to follow
-          textObj2.top  = textObj.height + Math.floor(textObj2.height /2) + 5;
-          //width is only dependant on this obj, not the previous one
-          textObj2.left = Math.floor(textObj2.width /2) + 1;
+      //BEGIN Candidate Address Section ----
+       //BLOCK 2 Create the fabric text object for Cadidate ADDRESS
+    var textObj2 = new fabric.Text(vaddress1 + " " + vaddress2 , { 
+          fontFamily: 'DejaVu_Serif_400', 
+          left: 0,
+          top: 0,
+          fontSize: 20,
+         // textAlign: "left",
+          fill:"#000000",  // Set text color to BLUE
+          //backgroundColor: "#ffffff"
+      });
       
-          //Add THIRD obj to canvas
-          canvas.add(textObj2);
-    //END Candidate Address Section ----
-    
-    
-    //BEGIN EMPLOYMENT Section(s) ----
-          //Add next object dupe this for jobs
-                //get all the form items - JOBS ONLY
-          $("#job_history :input").each(function(idx,item){
-             
-                text += item.value + "\n"
-          })
-          
-          
-          var textObj3 = new fabric.Text(text, { 
-              fontFamily: 'DejaVu_Serif_400', 
-              left: 0,
-              top: 0,
-              fontSize: 16,
-              textAlign: "left",
-              fill:"#000000"  // Set text color to black
-          });
-          
-          //Calculate the CENTER of the object that needs to follow
-          textObj3.top  = textObj.height + textObj2.height + Math.floor(textObj3.height /2) + 10;
-          //width is only dependant on this obj, not the previous one
-          textObj3.left = Math.floor(textObj3.width /2) + 1;
+       //Calculate the CENTER of the object that needs to follow
+      textObj2.top  = textObj.height + Math.floor(textObj2.height /2) + 5;
+      //width is only dependant on this obj, not the previous one
+      textObj2.left = Math.floor(textObj2.width /2) + 1;
+  
+      //Add THIRD obj to canvas
+      canvas.add(textObj2);
       
-          //Add THIRD obj to canvas
-          canvas.add(textObj3);
-    //END EMPLOYMENT Section(s) ----
-
+      //END Candidate Address Section ----
+    
+      //Add next object dupe this for jobs
+            //get all the form items - JOBS ONLY
+      $("#job_history :input").each(function(idx,item){
+         
+            text += item.value + "\n"
+      })
+      
+      
+      var textObj3 = new fabric.Text(text, { 
+          fontFamily: 'DejaVu_Serif_400', 
+          left: 0,
+          top: 0,
+          fontSize: 16,
+          textAlign: "left",
+          fill:"#000000"  // Set text color to black
+      });
+      
+      //Calculate the CENTER of the object that needs to follow
+      textObj3.top  = textObj.height + Math.floor(textObj3.height /2) + 5;
+      //width is only dependant on this obj, not the previous one
+      textObj3.left = Math.floor(textObj3.width /2) + 1;
+  
+      //Add THIRD obj to canvas
+      canvas.add(textObj3);
+      
+      
+      writeDataUrl()
 }
+
+
+//NEW Code for pinbutton
+/*
+1)  add         <script type="text/javascript" src="lib/pinterest-plus-html5.min.js">
+2)where you want to button to show add:
+
+      <div id="pin-it-button" class="pin-it-button" data-url="" data-image="" data-description=""></div>
+
+3) wire up the form on the bottom of the page to call the createResumeImage
+         <input type="button" onclick="createResumeImage()" value="Create image and see PIN button"/> (value does not matter)
+*/
+
+ //setup pintrest button
+ function setupPin(pageUrl, imageUrl, descr){
+     $("#pin-it-button").attr("data-url", pageUrl);
+     $("#pin-it-button").attr("data-image", imageUrl);
+     $("#pin-it-button").attr("data-description", descr);
+     PinterestPlus.pinit()
+  }
+     
+  //this call actually sends the data to the API and upon success renders the pin button
+  function createResumeImage(){
+      if ( $("#dataurl")[0].value.length < 10) {alert("No canvas data to send!");return}
+      $.post('/api/save_resume',{dataurl: $("#dataurl")[0].value,session: $("#session")[0].value }, function(data) {
+          var descr = document.getElementById('fname').value + "'s Resume";
+          /*********
+          *** NOTE: Page url is harccoded here
+          */
+          //data['ok'] will be the image url of the Resume as returned by the API call
+          setupPin("http://pinxp.metrony.c9.io/index3-resFull.html", data['ok'],descr);
+        });
+  }
+
+
 </script>
 
 
@@ -454,12 +490,12 @@ function populatCanvasFromForm(){
         </div><!---- END RIGHT BAR DIV-->
         </div><!-- ends row-fluid div -->
     </div><!-- ends fluid demo div -->
-   
+   <div id="pin-it-button" class="pin-it-button" data-url="" data-image="" data-description=""></div>
     <form action="/api/save_resume" method="POST">
         <input type="hidden" name="session" id="session"></input>
           <input type="hidden" name="resformdata" id="resformdata"></input>
         <textarea id="dataurl" name="dataurl"></textarea>
-        <input type="submit"/>
+        <input type="button" onclick="createResumeImage()" value="Create image and see PIN button"/>
     </form>
 </body>
 </html>

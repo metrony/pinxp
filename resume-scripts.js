@@ -20,11 +20,11 @@
 				//Defines data to be injected in the form
 				var data = [
 					{
-						"adr" : "A",
-						"employer_name" : "B",
-						"date" : "XX/XX/XXXX",
+						"adr" : "Employer 1 Address",
+						"employer_name" : "Employer 1",
+						"date" : "XX/XX/XXXX to XX/XX/XXXX",
 						"skillTemplate" :[
-							{"skill":"1", "phoneType":"pro"},
+							{"skill":"Skill 1", "phoneType":"pro"},
 							{"skill":"2", "phoneType":"perso"},
 							{"skill":"3", "phoneType":"perso"}
 						],
@@ -36,9 +36,9 @@
 					},
 					{
 						//"state" : "US",
-						"adr" : "X",
-						"employer_name" : "Y",
-						"date" : "XX/XX/XXXX",
+						"adr" : "",
+						"employer_name" : "",
+						"date" : "XX/XX/XXXX to XX/XX/XXXX",
 						"phoneTemplate" :[
 							{"phone":"4"},
 							{"phone":"5"},
@@ -52,9 +52,9 @@
 					},
 					{
 						//"state" : "United States",
-						"adr" : "O",
-						"employer_name" : "P",
-						"date" : "XX/XX/XXXX",
+						"adr" : "Employer Address",
+						"employer_name" : "Employer",
+						"date" : "XX/XX/XXXX to XX/XX/XXXX",
 						"phoneTemplate" :[
 							{"phone":"7"},
 							{"phone":"8"},
@@ -78,7 +78,7 @@
             
        function myFxEmployer()
      {
-        var vemployer_name=document.getElementById('employer_name').value;
+        var vemployer_name=document.getElementById('employer_name0').value;
         var vaddress=document.getElementById('address').value;
         var vdate=document.getElementById('date').value;
         
