@@ -1,30 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>PinRes - Resume Pinner</title>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-        
-        <script src="resume-scripts.js"></script>
-        <link rel="stylesheet" type="text/css" href="resume-style.css">
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
-        
-     
-        <style src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css"></style>
-        
-        
-        <script type="text/javascript" src="lib/jquery/jquery-1.4.2.js"></script>
-		<script type="text/javascript" src="lib/jquery/jquery-ui-1.8.2.custom.min.js"></script>
-		<script type="text/javascript" src="jquery-dynamic-form.js"></script>
-        
-        <script type="text/javascript" src="//cloud.github.com/downloads/kangax/fabric.js/0.9.15.min.js"></script>
-        <script type="text/javascript" src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/Times_New_Roman.font.js"></script>            
-        <script type="text/javascript" src="https://raw.github.com/kangax/fabric.js/master/lib/fonts/DejaVu_Serif_400.font.js"></script>            
- 
-      <script type="text/javascript" src="lib/pinterest-plus-html5.min.js"></script>
-    
-    <script type="text/javascript">
-       function GUID ()
+      function GUID ()
         {
             var S4 = function ()
             {
@@ -47,7 +21,14 @@
             $("#session")[0].value = GUID();    
         }
 
-
+// add startswith to javascript strings
+if (typeof String.prototype.startsWith != 'function') {
+  // see below for better implementation!
+  String.prototype.startsWith = function (str){
+    return this.indexOf(str) == 0;
+  };
+}
+    
     
     //FORM VALIDATION
         function validateForm()
@@ -269,7 +250,7 @@ var writeDataUrl = function(){
 
 
 
-function populatCanvasFromForm(){ 
+function populatCanvasFromForm(){
     
     //alert("hi");
     var text = "";
@@ -312,21 +293,7 @@ function populatCanvasFromForm(){
           textObj.left = Math.floor(textObj.width /2) + 1;
           //Then ADD the textObj to the Canvas
           canvas.add(textObj);
-
-          //END Candidate Name Section ----
-
-
-          //Add FIRST Horizontal Line
-          var line = new fabric.Line([0, 28, 290, 28], { 
-            stroke: 'red',
-            fill: 'red',
-            strokeWidth: 5
-          });
-          canvas.add(line);
-          //END Candidate Name Section ----
-
-          //End Horizontal Line
- 
+    //END Candidate Name Section ----
         
         
      //BEGIN Candidate Address Section ----
@@ -343,33 +310,19 @@ function populatCanvasFromForm(){
           
            //Calculate the CENTER of the object that needs to follow
           textObj2.top  = textObj.height + Math.floor(textObj2.height /2) + 5;
-          //width is only dependent on this obj, not the previous one
+          //width is only dependant on this obj, not the previous one
           textObj2.left = Math.floor(textObj2.width /2) + 1;
-          
-          
+      
           //Add THIRD obj to canvas
           canvas.add(textObj2);
-       //END Candidate Address Section ----
-
-        //Add SECOND Horizontal Line
-          //lineObj.top  = textObj.height + textObj2.height + 10;
-          var line2 = new fabric.Line([0, textObj.height + textObj2.height + 10 , 290, textObj.height + textObj2.height + 10], { 
-            stroke: 'red',
-            fill: 'red',
-            strokeWidth: 5
-          });
-          canvas.add(line2);
-          //End Horizontal Line          
-          
-
+    //END Candidate Address Section ----
     
     
     //BEGIN EMPLOYMENT Section(s) ----
           //Add next object dupe this for jobs
                 //get all the form items - JOBS ONLY
           $("#job_history :input").each(function(idx,item){
-                console.log(item.name);
-                if (item.name.indexOf('title') > 1) text += '\n\n';
+             
                 text += item.value + "\n"
           })
           
@@ -426,95 +379,3 @@ function populatCanvasFromForm(){
           setupPin("http://pinxp.metrony.c9.io/index3-resFull.html", data['ok'],descr);
         });
   }
-
-</script>
-  
-
-    </head>
-<body>
-    <div class="header"><img src="images/PinRes-Resume.jpg">
-    </div>        
-    
-    <div class="demo-description">
-        <p><b>Build a Resume to Pin - DEMO ONLY ** ALL ERROR CHECKING or DATA VERIFCATION is OFF</b></p>
-    </div>
-    
-    
-    <div class="container demo">
-        <div class="row">
-        
-        <div id="canvasDiv" class="span4">
-            <!--- LEFT COLUMN --->
-            <canvas id="myCanvas" width="250" height="1000" style="border:1px solid #000000;">Your Browser Does Not Support This Technology
-            </canvas>       
-        </div>
-        <div class="span8">
-            <!---- RIGHT COLUMN-->
-            <!--COLOR:<BR / >
-            <input type="button" onclick="myFunctionColor()" value="Add Color" /><BR / ><BR / >
-            ADD A SEPARATOR - make this replicable and draggable<BR />
-            <input type="button" onclick="mySeparator()" value="Add a Separator" /><BR /><BR / >
-            -->
-          
-                     
-            <form method="post" action="#" value="Post" id="resForm">
-            <input type="button" onclick="myFunctionPhoto()" value="Add Your Photo" />
-            <img id="photo" src="https://raw.github.com/metrony/pinxp/master/ximages/Molly-125px.jpg" /><BR / ><BR / >
-          
-        <h3>Fill In Your Information</h3>
-            <!--<input type="button" onclick="myFunction2()" value="Add Your Name" /> -->
-            <input type="text" id="fname" name="fname" value="first name" onblur="populatCanvasFromForm();">
-                
-            <input type="text" id="lname" size="28" value="last name" onblur="populatCanvasFromForm();">
-              
-                 
-            <input type="text" id="address1" name="address1" value="Address 1" onblur="populatCanvasFromForm();"><BR / >
-            <input type="text" id="address2" name="address2" value="Address 2" onblur="populatCanvasFromForm();"><BR / >
-            <input type="text" id="city" value="city" onblur="populatCanvasFromForm();"><input type="text" id="state" value="state or province" onblur="populatCanvasFromForm();"><input type="text" id="zip" size="10" value="zip or postal" onblur="populatCanvasFromForm();"><BR / >
-            <input type="text" id="country" value="country" onblur="populatCanvasFromForm();">
-             
-            <BR /><BR />
-        
-            <!-- **************** BEGIN JOBS SECTION **************** -->
-
-			<fieldset id="job_history">
-				<h2>Employment History</h2>
-		
-				<fieldset id="people">
-					
-				    <p><label for="employer_name">Your Title: </label><input id="title" type="text" name="title" size="30" onblur="myFxEmployer();"></p>
-            <p><label for="employer_name">Employer Name: </label><input id="employer_name" type="text" name="employer_name" size="30" onblur="myFxEmployer();"></p>
-    				<p><label for="address">Location: </label><input id="address" type="text" name="adr" size="30" onblur="myFxEmployer();"></p>
-    				
-    				<p><label for="city">Date Range: </label><input id="date" type="text" name="date" size="50" onblur="myFxEmployer();"></p>
-    				
-    				<p id='skillTemplate'><label for="skill">Skills (max 5): </label><input id="skill" type="text" name="skill" size="50"></p>
-                    
-    				<p><span class="adder">Add Another Skill <a id="minus5" href="">[-]</a> <a id="plus5" href="">[+]</a></span></p>
-    				
-    				<!--<p id='phone2Template'><label for="phone2">telephone 2 : </label><input id="phone2" type="text" name="phone2" size="50"><br /> -->
-				    <!-- <label for="professionnal">Professional ?</label><input id="professionnal" type="checkbox" value="pro" name="phonePro" /> <br />-->
-    				<p><label for="description">Description</label><textarea id="description" name="description" rows="10" cols="100" maxlength="400">Enter Your Job Desciption</textarea>
-    				</p>
-                   
-				</fieldset>
-                
-				<p><span class="adder">Add Another Position: <a id="minus" href="">[-]</a> <a id="plus" href="">[+]</a></span></p>
-			</fieldset>
-			<input type="button" onclick="populatCanvasFromForm()" value="submit" />
-		</form>
-        
-        <!-- END JOBS SECTION -->
-       
-        </div><!---- END RIGHT BAR DIV-->
-        </div><!-- ends row-fluid div -->
-    </div><!-- ends fluid demo div -->
-   <div id="pin-it-button" class="pin-it-button" data-url="" data-image="" data-description=""></div>
-    <form action="/api/save_resume" method="POST">
-        <input type="hidden" name="session" id="session"></input>
-          <input type="hidden" name="resformdata" id="resformdata"></input>
-        <textarea id="dataurl" name="dataurl"></textarea>
-        <input type="button" onclick="createResumeImage()" value="Create image and see PIN button"/>
-    </form>
-</body>
-</html>
