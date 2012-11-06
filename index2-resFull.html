@@ -321,9 +321,9 @@ function populatCanvasFromForm(){
 
           //Add FIRST Horizontal Line
           var line = new fabric.Line([0, 28, 290, 28], { 
-            stroke: 'red',
-            fill: 'red',
-            strokeWidth: 5
+            stroke: '#c0c0c0',
+            fill: '#c0c0c0',
+            strokeWidth: 8
           });
           canvas.add(line);
           //END Candidate Name Section ----
@@ -357,8 +357,8 @@ function populatCanvasFromForm(){
         //Add SECOND Horizontal Line
           //lineObj.top  = textObj.height + textObj2.height + 10;
           var line2 = new fabric.Line([0, textObj.height + textObj2.height + 10 , 290, textObj.height + textObj2.height + 10], { 
-            stroke: 'red',
-            fill: 'red',
+            stroke: '#c0c0c0',
+            fill: '#c0c0c0',
             strokeWidth: 5
           });
           canvas.add(line2);
@@ -375,6 +375,28 @@ function populatCanvasFromForm(){
                 if (item.name.indexOf('title') > 1) text += '\n\n';
                 text += item.value + "\n"
           })
+          
+          
+     // Measure Description TextArea Width to Calcualte Line Breaks are
+      var xtext = canvas.width / 2;
+      var ytext = canvas.height / 2 - 10;
+      var text = 'Hello World!';
+
+      context.font = '30pt Calibri';
+      context.textAlign = 'center';
+      context.fillStyle = 'blue';
+      context.fillText(text, x, y);
+
+      // get text metrics
+      var metrics = context.measureText(text);
+      var width = metrics.width;
+      context.font = '20pt Calibri';
+      context.textAlign = 'center';
+      context.fillStyle = '#555';
+      context.fillText('(' + width + 'px wide)', x, y + 40);
+      
+      
+      
           
           
           var textObj3 = new fabric.Text(text, { 
