@@ -376,29 +376,7 @@ function populatCanvasFromForm(){
                 text += item.value + "\n"
           })
           
-          
-     // Measure Description TextArea Width to Calcualte Line Breaks are
-      var xtext = canvas.width / 2;
-      var ytext = canvas.height / 2 - 10;
-      var text = 'Hello World!';
-
-      context.font = '30pt Calibri';
-      context.textAlign = 'center';
-      context.fillStyle = 'blue';
-      context.fillText(text, x, y);
-
-      // get text metrics
-      var metrics = context.measureText(text);
-      var width = metrics.width;
-      context.font = '20pt Calibri';
-      context.textAlign = 'center';
-      context.fillStyle = '#555';
-      context.fillText('(' + width + 'px wide)', x, y + 40);
-      
-      
-      
-          
-          
+                   
           var textObj3 = new fabric.Text(text, { 
               fontFamily: 'DejaVu_Serif_400', 
               left: 0,
@@ -451,6 +429,41 @@ function populatCanvasFromForm(){
           setupPin("http://pinxp.metrony.c9.io/index3-resFull.html", data['ok'],descr);
         });
   }
+  
+  //Calculate the TEXTAREA MAX WIDTH
+  function wrapText(context, text, x, y, maxWidth, lineHeight) {
+        var words = text.split(' ');
+        var line = '';
+
+        for(var n = 0; n < words.length; n++) {
+          var testLine = line + words[n] + ' ';
+          var metrics = context.measureText(testLine);
+          var testWidth = metrics.width;
+          if(testWidth > maxWidth) {
+            context.fillText(line, x, y);
+            line = words[n] + ' ';
+            y += lineHeight;
+          }
+          else {
+            line = testLine;
+          }
+        }
+        context.fillText(line, x, y);
+      }
+      
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var maxWidth = 280;
+      var lineHeight = 25;
+      var x = (canvas.width - maxWidth) / 2;
+      var y = 60;
+      var text = 'All the world \'s a stage, and all the men and women merely players. They have their exits and their entrances; And one man in his time plays many parts.';
+
+      context.font = 'DejaVu_Serif_400';
+      context.fillStyle = '#333';
+
+      wrapText(context, text, x, y, maxWidth, lineHeight);
+      
 
 </script>
   
