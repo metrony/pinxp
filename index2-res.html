@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="pin-styles.css">
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+     
+        <style src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css"></style>
+    
+    
+    <script>
+       function GUID ()
+        {
+            var S4 = function ()
+            {
+                return Math.floor(
+                        Math.random() * 0x10000 /* 65536 */
+                    ).toString(16);
+            };
+        
+            return (
+                    S4() + S4() + "-" +
+                    S4() + "-" +
+                    S4() + "-" +
+                    S4() + "-" +
+                    S4() + S4() + S4()
+                );
+        }
+
+        function setGuid()
+        {
+            $("#session")[0].value = GUID();    
+        }
+
+
+    
+    
+    //FORM VALIDATION
+        function validateForm()
+        {
+        var x=document.forms["myForm"]["fname"].value;
+        if (x==null || x=="")
+          {
+          alert("First name must be filled out");
+          return false;
+          }
+        }
+    
+    // MAKE THE PHOTO DRAGGABLE
+    
+        function allowDrop(ev)
+    {
+    ev.preventDefault();
+    }
+    
+    function drag(ev)
+    {
+    ev.dataTransfer.setData("Text",ev.target.id);
+    }
+    
+    function drop(ev)
+    {
+    ev.preventDefault();
+    var data=ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+    }
+
+
+        
+        
+    //ADD A SEPRATOR
+      function mySeparator()
+    {
+        
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    
+      //Draw a red line at y=200
+    ctx.strokeStyle="red";
+    ctx.moveTo(5,200);
+    ctx.lineTo(395,200);
+    ctx.stroke();
+    
+    }
+
+
+
+    //ADD COLOR
+    function myFunctionColor()
+    {
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    
+    // Create gradient
+    var grd=ctx.createLinearGradient(0,0,200,0);
+    grd.addColorStop(0,"red");
+    grd.addColorStop(1,"white");
+    
+    // Fill with gradient
+    ctx.fillStyle=grd;
+    ctx.fillRect(0,0,250,100);
+    }
+
+
+    //ADD YOUR NAME
+    function myFunction2()
+    {
+        
+        var a=document.getElementById('fname').value;
+        var b=document.getElementById('lname').value;
+        //alert(a);
+        
+        
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    
+    //Draw a red line at y=100 UNDER YOUR NAME
+    ctx.strokeStyle="red";
+    ctx.moveTo(5,50);
+    ctx.lineTo(395,50);
+    ctx.stroke();
+    
+    //ADD the Text
+    ctx.textBaseline="bottom"; 
+    //ctx.fillText("Your Name Goes Here",10,100); 
+    ctx.fillText(a+ " " + b,10,50); 
+    
+        /* var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        ctx.font="20px Arial";
+        ctx.fillText("Your Name Goes Here",5,260);
+        
+        */
+        //update dataurl
+        writeDataUrl()
+    }
+    
+     function myFunction2a()
+     {
+        var a=document.getElementById('fname').value;
+        var b=document.getElementById('lname').value;
+        
+        var c=document.getElementById('address1').value;
+        var d=document.getElementById('address2').value;
+        
+        var e=document.getElementById('city').value;
+        var f=document.getElementById('state').value;
+        var g=document.getElementById('zip').value;
+        var h=document.getElementById('country').value;
+        
+        //alert(b);
+        
+        var c=document.getElementById("myCanvas");
+        var ctx=c.getContext("2d");
+        
+        ctx.fillStyle = "#ff0000";
+        // For Testing Only So You Can See the Rectangle that will be Cleared 
+        ctx.fillRect(10, 35, 290,200);
+        
+        //Clears the Line for New Text
+        //ctx.clearRect(10, 35, 290,50);
+        
+        ctx.fillStyle = "#000000";
+        ctx.font         = 'bold 20px sans-serif';
+        //ctx.clearText(b+ " " + b,10,50); 
+         ctx.fillText(a+ " " + b,10,50); 
+         
+         
+    
+        
+    writeDataUrl()
+    }
+    
+    
+        
+    function myFunctionPhoto()
+    {
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    var img=document.getElementById("photo");
+     //alert("hi");
+    ctx.drawImage(img,10,10);
+    }
+    
+    
+    // loaded automatically on page load
+window.onload = function() {
+    var div = document.getElementById("canvasDiv");
+    var canvas = document.getElementById("myCanvas");
+    canvas.height = div.offsetHeight;
+    canvas.width  = div.offsetWidth;
+}
+
+var writeDataUrl = function(){
+     var c=document.getElementById("myCanvas");
+    $('#dataurl')[0].value=    c.toDataURL();
+       $("#session")[0].value = GUID();   
+    }
+  
+    </script>
+
+
+    </head>
+<body>
+    <div class="header"><img src="images/PinPixUploader-1.jpg">
+    </div>        
+    
+    <div class="demo-description">
+        <p>Build a Resume Online - STEP 1</p>
+    </div>
+    
+    <form name="myForm" action="demo_form.asp" onsubmit="return validateForm()" method="post">
+    <div class="container demo">
+        <div class="row">
+        
+        <div id="canvasDiv" class="span4">
+            <!--- LEFT COLUMN --->
+                <canvas id="myCanvas" width="250" height="500" style="border:1px solid #000000;">
+            </canvas>       
+        </div>
+        <div class="span8"> <!---- RIGHT COLUMN-->
+        <!--COLOR:<BR / >
+        <input type="button" onclick="myFunctionColor()" value="Add Color" /><BR / ><BR / >-->
+        ADD A SEPARATOR - make this replicable and draggable<BR />
+          <input type="button" onclick="mySeparator()" value="Add a Separator" /><BR /><BR / >
+          
+          
+          <p>About You:</p>
+
+         <input type="button" onclick="myFunctionPhoto()" value="Add Your Photo" />
+         <img id="photo" src="https://raw.github.com/metrony/pinxp/master/images/Molly-125px.jpg" /><BR / ><BR / >
+          
+        
+         <!--<input type="button" onclick="myFunction2()" value="Add Your Name" /> -->
+         <input type="text" id="fname" name="fname" value="first name" onblur="myFunction2a();">
+        
+         <input type="text" id="lname" size="28" value="last name" onblur="myFunction2a();">
+      
+         
+         <input type="text" id="address1" name="address1" value="Address 1"><BR / >
+        <input type="text" id="address2" name="address2" value="Address 2"><BR / >
+         <input type="text" id="city" value="city"><input type="text" id="state" value="state or province"><input type="text" id="zip" size="10" value="zip or postal code"><BR / >
+         <input type="text" id="country" value="country">
+         
+        <BR /><BR />NEED TO ADD TEXT MEASURE and WRAP
+        
+        
+                
+       
+        </div><!---- END RIGHT BAR DIV-->
+        </div><!-- ends row-fluid div -->
+    </div><!-- ends fluid demo div -->
+    </form>
+    <form action="/api/save_resume" method="POST">
+        <input type="hidden" name="session" id="session"></input>
+        <textarea id="dataurl" name="dataurl"></textarea>
+        <input type="submit"/>
+    </form>
+</body>
+</html>

@@ -1,0 +1,66 @@
+body {
+ margin: 0px;
+ padding: 0px;
+ font-family: sans-serif; 
+}
+
+div.demo div div div {background-color:#222224;}
+
+.header {
+height: 150px;
+background-color:#222224;
+padding-left: 30%;
+padding-top: 5%;}
+
+
+
+
+/* ------------- Below styles are for the resume add jobs section */
+
+
+h3 
+{
+ font-weight:bold;
+
+}
+
+#zip {
+width: 80px;
+
+}
+
+.adder {
+ margin-top: 1em;
+ font-weight:bold;
+
+}
+
+form p > label{
+	display: block;
+	//width: 150px;
+	//float: left;
+	clear:left;
+    font-weight:bold;
+}
+form p > span, fieldset > fieldset{
+	display: block;
+	float: left;
+	clear:left;
+}
+    form p > input{
+	float: left;
+    margin-bottom: .5em;
+}
+form p > textarea{
+    display: block;
+	//float: left;
+    margin-bottom: .5em;
+}
+span.inline{
+	display:inline;
+	clear:none;
+}
+			
+
+  
+        
