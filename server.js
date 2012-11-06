@@ -1,5 +1,5 @@
 /*jshint globalstrict:true laxbreak:true laxcomma:true unused:false es5:true  */
-/*global require:true module:true __dirname:true console:true process:true*/
+/*global require:true module:true __dirname:true console:true process:true Buffer:true */
 
 'use strict';
 
@@ -43,6 +43,10 @@ app.get('/api/get_files', function(req, res, next){
   res.send({'images': images});
 });
 
+app.get('/api/status', function(req, res, next){
+  res.send({host:req.headers.host});
+});
+
 app.post('/api/save_resume', function(req, res, next){
   var destDir = __dirname + '/uploads/' + req.body.session;
   //if the output directory does not exist - create it
@@ -55,7 +59,7 @@ app.post('/api/save_resume', function(req, res, next){
     var dataurl = req.body.dataurl.slice(22);
     var decoded = new Buffer(dataurl, 'base64');
     fs.writeFileSync(destDir + '/resume.png', decoded, function(err) {});
-    res.send({'ok':'http://pinxp.metrony.c9.io//uploads/' + req.body.session + '/resume.png'});
+    res.send({'ok':'http://' + req.headers.host + '/uploads/' + req.body.session + '/resume.png'});
 });
 
 app.post('/api/upload_file', function(req, res, next){
