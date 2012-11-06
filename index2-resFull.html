@@ -368,7 +368,8 @@ function populatCanvasFromForm(){
           //Add next object dupe this for jobs
                 //get all the form items - JOBS ONLY
           $("#job_history :input").each(function(idx,item){
-             
+                console.log(item.name);
+                if (item.name.indexOf('title') > 1) text += '\n\n';
                 text += item.value + "\n"
           })
           
