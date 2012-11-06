@@ -312,7 +312,21 @@ function populatCanvasFromForm(){
           textObj.left = Math.floor(textObj.width /2) + 1;
           //Then ADD the textObj to the Canvas
           canvas.add(textObj);
-    //END Candidate Name Section ----
+
+          //END Candidate Name Section ----
+
+
+          //Add FIRST Horizontal Line
+          var line = new fabric.Line([0, 28, 290, 28], { 
+            stroke: 'red',
+            fill: 'red',
+            strokeWidth: 5
+          });
+          canvas.add(line);
+          //END Candidate Name Section ----
+
+          //End Horizontal Line
+ 
         
         
      //BEGIN Candidate Address Section ----
@@ -329,12 +343,25 @@ function populatCanvasFromForm(){
           
            //Calculate the CENTER of the object that needs to follow
           textObj2.top  = textObj.height + Math.floor(textObj2.height /2) + 5;
-          //width is only dependant on this obj, not the previous one
+          //width is only dependent on this obj, not the previous one
           textObj2.left = Math.floor(textObj2.width /2) + 1;
-      
+          
+          
           //Add THIRD obj to canvas
           canvas.add(textObj2);
-    //END Candidate Address Section ----
+       //END Candidate Address Section ----
+
+        //Add SECOND Horizontal Line
+          //lineObj.top  = textObj.height + textObj2.height + 10;
+          var line2 = new fabric.Line([0, textObj.height + textObj2.height + 10 , 290, textObj.height + textObj2.height + 10], { 
+            stroke: 'red',
+            fill: 'red',
+            strokeWidth: 5
+          });
+          canvas.add(line2);
+          //End Horizontal Line          
+          
+
     
     
     //BEGIN EMPLOYMENT Section(s) ----
@@ -408,7 +435,7 @@ function populatCanvasFromForm(){
     </div>        
     
     <div class="demo-description">
-        <p>Build a Resume to Pin - DEMO</p>
+        <p><b>Build a Resume to Pin - DEMO ONLY ** ALL ERROR CHECKING or DATA VERIFCATION is OFF</b></p>
     </div>
     
     
@@ -428,13 +455,12 @@ function populatCanvasFromForm(){
             <input type="button" onclick="mySeparator()" value="Add a Separator" /><BR /><BR / >
             -->
           
-             <p><b>ABOUT YOU:</b></p>
-            
+                     
             <form method="post" action="#" value="Post" id="resForm">
             <input type="button" onclick="myFunctionPhoto()" value="Add Your Photo" />
-            <img id="photo" src="https://raw.github.com/metrony/pinxp/master/images/Molly-125px.jpg" /><BR / ><BR / >
+            <img id="photo" src="https://raw.github.com/metrony/pinxp/master/ximages/Molly-125px.jpg" /><BR / ><BR / >
           
-        
+        <h3>Fill In Your Information</h3>
             <!--<input type="button" onclick="myFunction2()" value="Add Your Name" /> -->
             <input type="text" id="fname" name="fname" value="first name" onblur="populatCanvasFromForm();">
                 
@@ -455,19 +481,19 @@ function populatCanvasFromForm(){
 		
 				<fieldset id="people">
 					
-				<h3>Fill In Your Information</h3>
-                    <p><label for="employer_name">Employer Name: </label><input id="employer_name" type="text" name="employer_name" size="30" onblur="myFxEmployer();"></p>
+				    <p><label for="employer_name">Your Title: </label><input id="title" type="text" name="title" size="30" onblur="myFxEmployer();"></p>
+            <p><label for="employer_name">Employer Name: </label><input id="employer_name" type="text" name="employer_name" size="30" onblur="myFxEmployer();"></p>
     				<p><label for="address">Location: </label><input id="address" type="text" name="adr" size="30" onblur="myFxEmployer();"></p>
     				
     				<p><label for="city">Date Range: </label><input id="date" type="text" name="date" size="50" onblur="myFxEmployer();"></p>
     				
-    				<p id='skillTemplate'><label for="skill">Skills: </label><input id="skill" type="text" name="skill" size="50"></p>
+    				<p id='skillTemplate'><label for="skill">Skills (max 5): </label><input id="skill" type="text" name="skill" size="50"></p>
                     
     				<p><span class="adder">Add Another Skill <a id="minus5" href="">[-]</a> <a id="plus5" href="">[+]</a></span></p>
     				
     				<!--<p id='phone2Template'><label for="phone2">telephone 2 : </label><input id="phone2" type="text" name="phone2" size="50"><br /> -->
 				    <!-- <label for="professionnal">Professional ?</label><input id="professionnal" type="checkbox" value="pro" name="phonePro" /> <br />-->
-    				<p><label for="description">Description</label><textarea id="description" name="description" rows="4" cols="50" maxlength="50"></textarea>
+    				<p><label for="description">Description</label><textarea id="description" name="description" rows="10" cols="100" maxlength="400">Enter Your Job Desciption</textarea>
     				</p>
                    
 				</fieldset>
