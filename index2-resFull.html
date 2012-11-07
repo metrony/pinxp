@@ -373,7 +373,11 @@ function populatCanvasFromForm(){
           $("#job_history :input").each(function(idx,item){
                 console.log(item.name);
                 if (item.name.indexOf('title') > 1) text += '\n\n';
-                text += item.value + "\n"
+                if (item.name.indexOf('description') > 1) {
+                    text += wrapTextWithReturns(canvas, item.value,250) + "\n";
+                } else {
+                    text += item.value + "\n"
+                }
           })
           
                    
@@ -430,6 +434,31 @@ function populatCanvasFromForm(){
         });
   }
   
+
+  //put in \n for linebreaks
+    function wrapTextWithReturns(canvas, text,maxWidth) {
+         var context = canvas.getContext('2d');
+        var words = text.split(' ');
+        var line = '';
+        var returnString = '';
+        for(var n = 0; n < words.length; n++) {
+          var testLine = line + words[n] + ' ';
+          var metrics = context.measureText(testLine);
+          var testWidth = metrics.width;
+          if(testWidth > maxWidth) {
+            returnString += line;
+            returnString += "\n";
+            line = words[n] + ' ';
+          }
+          else {
+            line = testLine;
+          }
+        }
+        returnString += line;
+        return returnString;
+      }
+      
+
   //Calculate the TEXTAREA MAX WIDTH
   function wrapText(context, text, x, y, maxWidth, lineHeight) {
         var words = text.split(' ');
@@ -451,6 +480,8 @@ function populatCanvasFromForm(){
         context.fillText(line, x, y);
       }
       
+      
+  function testWrapping(){
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
       var maxWidth = 280;
@@ -463,8 +494,7 @@ function populatCanvasFromForm(){
       context.fillStyle = '#333';
 
       wrapText(context, text, x, y, maxWidth, lineHeight);
-      
-
+  }
 </script>
   
 
@@ -482,6 +512,10 @@ function populatCanvasFromForm(){
         <div class="row">
         
         <div id="canvasDiv" class="span4">
+        
+            <button onclick="testWrapping()">Test Wrapping</button>        
+
+
             <!--- LEFT COLUMN --->
             <canvas id="myCanvas" width="250" height="1000" style="border:1px solid #000000;">Your Browser Does Not Support This Technology
             </canvas>       
