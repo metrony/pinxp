@@ -374,7 +374,7 @@ function populatCanvasFromForm(){
                 console.log(item.name);
                 if (item.name.indexOf('title') > 1) text += '\n\n';
                 if (item.name.indexOf('description') > 1) {
-                    text += wrapTextWithReturns(canvas, item.value,250) + "\n";
+                    text += wrapTextWithReturns(canvas, item.value,230) + "\n";
                 } else {
                     text += item.value + "\n"
                 }
@@ -513,7 +513,7 @@ function populatCanvasFromForm(){
         
         <div id="canvasDiv" class="span4">
         
-            <button onclick="testWrapping()">Test Wrapping</button>        
+            <!--<button onclick="testWrapping()">Test Wrapping</button>      -->  
 
 
             <!--- LEFT COLUMN --->

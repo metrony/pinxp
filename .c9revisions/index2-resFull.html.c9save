@@ -204,3 +204,5 @@
 {"ts":1352249411910,"patch":[[{"diffs":[[0,"em.value"],[1,",250"],[0,") + \"\\n\""]],"start1":11867,"start2":11867,"length1":16,"length2":20}]],"length":21138,"saved":false}
 {"ts":1352249468276,"patch":[[{"diffs":[[0,"ext,maxWidth) {\n"],[1,"         var context = canvas.getContext('2d');\n"],[0,"        var word"]],"start1":14233,"start2":14233,"length1":32,"length2":80}]],"length":21186,"saved":false}
 {"ts":1352249472446,"patch":[[{"diffs":[[0,"eturns(c"],[-1,"ontext"],[1,"anvas"],[0,", text,m"]],"start1":14216,"start2":14216,"length1":22,"length2":21}]],"length":21185,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1352250590955,"patch":[[{"diffs":[[0,"        "],[1,"<!--"],[0,"<button "]],"start1":16473,"start2":16473,"length1":16,"length2":20},{"diffs":[[0,"utton>      "],[1,"-->"],[0,"  \n\n\n       "]],"start1":16534,"start2":16534,"length1":24,"length2":27}]],"length":21192,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1352251040507,"patch":[[{"diffs":[[0,".value,2"],[-1,"5"],[1,"3"],[0,"0) + \"\\n"]],"start1":11869,"start2":11869,"length1":17,"length2":17}]],"length":21192,"saved":false}
