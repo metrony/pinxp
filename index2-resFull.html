@@ -399,6 +399,17 @@ function populatCanvasFromForm(){
           canvas.add(textObj3);
     //END EMPLOYMENT Section(s) ----
       writeDataUrl();
+      
+    
+         if ( $("#dataurl")[0].value.length < 10) {alert("No canvas data to send!");return}
+      $.post('/api/save_resume',{dataurl: $("#dataurl")[0].value,session: $("#session")[0].value }, function(data) {
+          var descr = document.getElementById('fname').value + "'s Resume";
+          /*********
+          *** NOTE: Page url is harccoded here
+          */
+          //data['ok'] will be the image url of the Resume as returned by the API call
+          setupPin("http://pinxp.metrony.c9.io/index3-resFull.html", data['ok'],descr);
+        });
 }
 
 
@@ -530,8 +541,9 @@ function populatCanvasFromForm(){
           
                      
             <form method="post" action="#" value="Post" id="resForm">
-            <input type="button" onclick="myFunctionPhoto()" value="Add Your Photo" />
-            <img id="photo" src="https://raw.github.com/metrony/pinxp/master/ximages/Molly-125px.jpg" /><BR / ><BR / >
+            <!--<input type="button" onclick="myFunctionPhoto()" value="Add Your Photo" />
+            <img id="photo" src="https://raw.github.com/metrony/pinxp/master/ximages/Molly-125px.jpg" /><BR / >
+            --><BR / >
           
         <h3>Fill In Your Information</h3>
             <!--<input type="button" onclick="myFunction2()" value="Add Your Name" /> -->
@@ -553,7 +565,7 @@ function populatCanvasFromForm(){
             <!-- **************** BEGIN JOBS SECTION **************** -->
 
 			<fieldset id="job_history">
-				<h2>Employment History</h2>
+				<h3>Employment History</h3>
 		
 				<fieldset id="people">
 					
@@ -565,16 +577,18 @@ function populatCanvasFromForm(){
     				
     				<p id='skillTemplate'><label for="skill">Skills (max 5): </label><input id="skill" type="text" name="skill" size="50"></p>
                     
-    				<p><span class="adder">Add Another Skill <a id="minus5" href="">[-]</a> <a id="plus5" href="">[+]</a></span></p>
+    				<p><span class="adder">Add Another Skill To This Job <a id="minus5" href="">[-]</a> <a id="plus5" href="">[+]</a></span></p>
     				
     				<!--<p id='phone2Template'><label for="phone2">telephone 2 : </label><input id="phone2" type="text" name="phone2" size="50"><br /> -->
-				    <!-- <label for="professionnal">Professional ?</label><input id="professionnal" type="checkbox" value="pro" name="phonePro" /> <br />-->
-    				<p><label for="description">Description</label><textarea id="description" name="description" rows="10" cols="100" maxlength="400">Enter Your Job Desciption</textarea>
+				    <!-- <label for="professionnal">Professional ?</label><input id="professionnal" type="checkbox" value="pro" name="phonePro" />-->
+                    <BR /> <BR />
+                    
+    				<p><label for="description">Job Description (400 Character Limit)</label><textarea id="description" name="description" rows="10" cols="150" maxlength="400">Enter Your Job Desciption</textarea>
     				</p>
                    
 				</fieldset>
                 
-				<p><span class="adder">Add Another Position: <a id="minus" href="">[-]</a> <a id="plus" href="">[+]</a></span></p>
+				<p><span class="adder">Add Another Job to This Resume: <a id="minus" href="">[-]</a> <a id="plus" href="">[+]</a></span></p>
 			</fieldset>
 			<input type="button" onclick="populatCanvasFromForm()" value="submit" />
 		</form>
@@ -588,8 +602,8 @@ function populatCanvasFromForm(){
     <form action="/api/save_resume" method="POST">
         <input type="hidden" name="session" id="session"></input>
           <input type="hidden" name="resformdata" id="resformdata"></input>
-        <textarea id="dataurl" name="dataurl"></textarea>
-        <input type="button" onclick="createResumeImage()" value="Create image and see PIN button"/>
+        <!--<textarea id="dataurl" name="dataurl"></textarea>
+        <input type="button" onclick="createResumeImage()" value="Create image and see PIN button"/>-->
     </form>
 </body>
 </html>
