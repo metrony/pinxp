@@ -298,7 +298,7 @@ function populatCanvasFromForm(){
     var vcountry=document.getElementById('country').value;
                
       
-    //BEGIN Candidate Name Section ----
+    //BEGIN Candidate Name and Info  Section ----
         // BLOCK 1 Create the fabric text object for Cadidate First Name and Last Name
         var textObj = new fabric.Text(vfname + " " + vlname , { 
           fontFamily: 'DejaVu_Serif_400', 
@@ -387,7 +387,8 @@ function populatCanvasFromForm(){
               top: 0,
               fontSize: 16,
               textAlign: "left",
-              fill:"#000000"  // Set text color to black
+              fill:"#000000"  // Set text color to black              
+              
           });
           
           //Calculate the CENTER of the object that needs to follow
@@ -400,16 +401,6 @@ function populatCanvasFromForm(){
     //END EMPLOYMENT Section(s) ----
       writeDataUrl();
       
-    
-         if ( $("#dataurl")[0].value.length < 10) {alert("No canvas data to send!");return}
-      $.post('/api/save_resume',{dataurl: $("#dataurl")[0].value,session: $("#session")[0].value }, function(data) {
-          var descr = document.getElementById('fname').value + "'s Resume";
-          /*********
-          *** NOTE: Page url is harccoded here
-          */
-          //data['ok'] will be the image url of the Resume as returned by the API call
-          setupPin("http://pinxp.metrony.c9.io/index3-resFull.html", data['ok'],descr);
-        });
 }
 
 
