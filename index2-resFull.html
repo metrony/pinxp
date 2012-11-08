@@ -581,7 +581,8 @@ function populatCanvasFromForm(){
                 
 				<p><span class="adder">Add Another Job to This Resume: <a id="minus" href="">[-]</a> <a id="plus" href="">[+]</a></span></p>
 			</fieldset>
-			<input type="button" onclick="populatCanvasFromForm()" value="submit" />
+			<input type="button" onclick="populatCanvasFromForm();createResumeImage()" value="submit" />
+               <div id="pin-it-button" class="pin-it-button" data-url="" data-image="" data-description=""></div>
 		</form>
         
         <!-- END JOBS SECTION -->
@@ -589,12 +590,12 @@ function populatCanvasFromForm(){
         </div><!---- END RIGHT BAR DIV-->
         </div><!-- ends row-fluid div -->
     </div><!-- ends fluid demo div -->
-   <div id="pin-it-button" class="pin-it-button" data-url="" data-image="" data-description=""></div>
+
     <form action="/api/save_resume" method="POST">
         <input type="hidden" name="session" id="session"></input>
           <input type="hidden" name="resformdata" id="resformdata"></input>
-        <!--<textarea id="dataurl" name="dataurl"></textarea>
-        <input type="button" onclick="createResumeImage()" value="Create image and see PIN button"/>-->
+        <input type="hidden" id="dataurl" name="dataurl">
+        <!--<input type="button" onclick="createResumeImage()" value="Create image and see PIN button"/>-->
     </form>
 </body>
 </html>
