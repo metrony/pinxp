@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>LinkedIn Login Test</title>
+          
+         
+        
+          <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+      api_key: uojqi3vfr0ie
+        </script>
+       
+    </head>
+    
+    <body>
+    <!-- Add the Javascript SDK -->
+    <div id="fb-root"></div>
+<script>
+  // Additional JS functions here
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '    449857985051904', // App ID
+      channelUrl : '//c9.io/metrony/pinxp/workspace/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional init code here
+
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+
+
+    
+        <div>the button should appear here
+      
+        </div>
+
+		<div id="xdropbox">
+			<span class="message">
+           there is nothing here to see
+            </span>
+		</div>
+		
+        <footer><br /><br /><br />
+	        <h2>PinRes File Upload &copy; 2012</h2>
+
+        </footer>
+   
+		
+	
+    </body>
+</html>

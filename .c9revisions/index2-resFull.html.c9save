@@ -275,3 +275,21 @@
 {"ts":1352309081571,"patch":[[{"diffs":[[0," Candidate Name "],[1,"and Info  "],[0,"Section ----\n   "]],"start1":8927,"start2":8927,"length1":32,"length2":42}]],"length":21332,"saved":false}
 {"ts":1352309120199,"patch":[[{"diffs":[[0,"o black\n"],[1,"              \n              createResumeImage()\n              \n              \n"],[0,"        "]],"start1":12284,"start2":12284,"length1":16,"length2":95}]],"length":21411,"saved":false}
 {"ts":1352309169611,"patch":[[{"diffs":[[0,"lack"],[-1,"\n              \n              createResumeImage()\n"],[0,"    "]],"start1":12287,"start2":12287,"length1":58,"length2":8}]],"length":21361,"saved":false}
+{"contributors":[],"silentsave":true,"ts":1352317465556,"patch":[[{"diffs":[[0,"        "],[-1,"<!--"],[0,"<textare"]],"start1":21168,"start2":21168,"length1":20,"length2":16}]],"length":21357,"saved":false}
+{"ts":1352317469466,"patch":[[{"diffs":[[0,"       <"],[-1,"textarea"],[0," id=\"dat"]],"start1":21169,"start2":21169,"length1":24,"length2":16}]],"length":21349,"saved":false}
+{"ts":1352317472611,"patch":[[{"diffs":[[0,"       <"],[1,"inp"],[0," id=\"dat"]],"start1":21169,"start2":21169,"length1":16,"length2":19}]],"length":21352,"saved":false}
+{"ts":1352317473777,"patch":[[{"diffs":[[0,"    <inp"],[1,"ut"],[0," id=\"dat"]],"start1":21172,"start2":21172,"length1":16,"length2":18}]],"length":21354,"saved":false}
+{"ts":1352317475232,"patch":[[{"diffs":[[0,"     <input "],[1,"ty "],[0,"id=\"dataurl\""]],"start1":21171,"start2":21171,"length1":24,"length2":27}]],"length":21357,"saved":false}
+{"ts":1352317476330,"patch":[[{"diffs":[[0,"input ty"],[1,"pe"],[0," id=\"dat"]],"start1":21177,"start2":21177,"length1":16,"length2":18}]],"length":21359,"saved":false}
+{"ts":1352317477319,"patch":[[{"diffs":[[0,"put type"],[1,"=\""],[0," id=\"dat"]],"start1":21179,"start2":21179,"length1":16,"length2":18}]],"length":21361,"saved":false}
+{"ts":1352317478115,"patch":[[{"diffs":[[0,"t type=\""],[1,"hid"],[0," id=\"dat"]],"start1":21181,"start2":21181,"length1":16,"length2":19}]],"length":21364,"saved":false}
+{"ts":1352317479645,"patch":[[{"diffs":[[0,"ype=\"hid"],[1,"den\""],[0," id=\"dat"]],"start1":21184,"start2":21184,"length1":16,"length2":20}]],"length":21368,"saved":false}
+{"ts":1352317480521,"patch":[[{"diffs":[[0,"\"hidden\""],[-1," "],[0,"id=\"data"]],"start1":21188,"start2":21188,"length1":17,"length2":16}]],"length":21367,"saved":false}
+{"ts":1352317481964,"patch":[[{"diffs":[[0,"\"hidden\""],[1," "],[0,"id=\"data"]],"start1":21188,"start2":21188,"length1":16,"length2":17},{"diffs":[[0,"\"></textarea"],[-1,">"],[0,"\n        <in"]],"start1":21223,"start2":21223,"length1":25,"length2":24}]],"length":21367,"saved":false}
+{"ts":1352317484176,"patch":[[{"diffs":[[0,"ataurl\">"],[-1,"</textarea"],[0,"\n       "]],"start1":21217,"start2":21217,"length1":26,"length2":16}]],"length":21357,"saved":false}
+{"ts":1352317500673,"patch":[[{"diffs":[[0,"utton\"/>"],[-1,"-->"],[0,"\n    </f"]],"start1":21318,"start2":21318,"length1":19,"length2":16}]],"length":21354,"saved":false}
+{"ts":1352317511339,"patch":[[{"diffs":[[0,"taurl\">\n        "],[1,"<!--"],[0,"<input type=\"but"]],"start1":21218,"start2":21218,"length1":32,"length2":36}]],"length":21358,"saved":false}
+{"ts":1352317512874,"patch":[[{"diffs":[[0,"utton\"/>"],[1,"-->"],[0,"\n    </f"]],"start1":21322,"start2":21322,"length1":16,"length2":19}]],"length":21361,"saved":false}
+{"ts":1352317519381,"patch":[[{"diffs":[[0,"omForm()"],[1,";createResumeImage()"],[0,"\" value="]],"start1":20661,"start2":20661,"length1":16,"length2":36}]],"length":21381,"saved":false}
+{"ts":1352317558421,"patch":[[{"diffs":[[0,"-->\n"],[-1,"   <div id=\"pin-it-button\" class=\"pin-it-button\" data-url=\"\" data-image=\"\" data-description=\"\"></div>"],[0,"\n   "]],"start1":20889,"start2":20889,"length1":109,"length2":8}]],"length":21280,"saved":false}
+{"ts":1352317560757,"patch":[[{"diffs":[[0,"mit\" />\n"],[1,"               <div id=\"pin-it-button\" class=\"pin-it-button\" data-url=\"\" data-image=\"\" data-description=\"\"></div>\n"],[0,"\t\t</form"]],"start1":20701,"start2":20701,"length1":16,"length2":130}]],"length":21394,"saved":false}
