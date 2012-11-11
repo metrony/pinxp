@@ -6,7 +6,7 @@
           
          
         
-          <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+          <script type="text/javascript" src="//platform.linkedin.com/in.js">
       api_key: uojqi3vfr0ie
         </script>
        
@@ -26,6 +26,15 @@
       xfbml      : true  // parse XFBML
     });
 
+ FB.api('/me', function(user) {
+            if (user) {
+                console.log(user);
+              var image = document.getElementById('image');
+              image.src = 'https://graph.facebook.com/' + user.id + '/picture';
+              var name = document.getElementById('name');
+              name.innerHTML = user.name
+            }
+          });
     // Additional init code here
 
   };
@@ -40,7 +49,8 @@
    }(document));
 </script>
 
-
+       <img id="image"/>
+        <div id="name"></div>
     
         <div>the button should appear here
       
